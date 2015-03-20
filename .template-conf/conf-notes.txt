@@ -1,0 +1,9 @@
+Common targets are:
+    
+    wrlinux-image-glibc-small
+    core-image-minimal
+    core-image-sato
+    meta-toolchain
+    adt-installer
+    meta-ide-support
+
