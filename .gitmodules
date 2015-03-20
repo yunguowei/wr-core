@@ -1,0 +1,56 @@
+[submodule "bitbake"]
+	path = bitbake
+	url = ../bitbake
+	branch = LB21_7.0_RCPL0002
+[submodule "oe-core"]
+	path = oe-core
+	url = ../oe-core
+	branch = LB21_7.0_RCPL0002
+[submodule "wrlinux"]
+	path = wrlinux
+	url = ../wrlinux
+	branch = LB21_7.0_RCPL0002
+[submodule "wr-kernel"]
+	path = wr-kernel
+	url = ../wr-kernel
+	branch = LB21_7.0_RCPL0002
+[submodule "qemuarm"]
+	path = qemuarm
+	url = ../qemuarm
+	branch = LB21_7.0_RCPL0002
+[submodule "wr-base"]
+	path = wr-base
+	url = ../wr-base
+	branch = LB21_7.0_RCPL0002
+[submodule "wr-fixes"]
+	path = wr-fixes
+	url = ../wr-fixes
+	branch = LB21_7.0_RCPL0002
+[submodule "meta-networking"]
+	path = meta-networking
+	url = ../meta-networking
+	branch = LB21_7.0_RCPL0002
+[submodule "meta-gnome-subset"]
+	path = meta-gnome-subset
+	url = ../meta-gnome-subset
+	branch = LB21_7.0_RCPL0002
+[submodule "meta-oe-subset"]
+	path = meta-oe-subset
+	url = ../meta-oe-subset
+	branch = LB21_7.0_RCPL0002
+[submodule "meta-python-subset"]
+	path = meta-python-subset
+	url = ../meta-python-subset
+	branch = LB21_7.0_RCPL0002
+[submodule "meta-perl-subset"]
+	path = meta-perl-subset
+	url = ../meta-perl-subset
+	branch = LB21_7.0_RCPL0002
+[submodule "meta-webserver"]
+	path = meta-webserver
+	url = ../meta-webserver
+	branch = LB21_7.0_RCPL0002
+[submodule "meta-intel"]
+	path = meta-intel
+	url = git://git.yoctoproject.org/meta-intel
+	branch = dizzy
