@@ -63,6 +63,7 @@ if [ $? = 0 ] ; then
 
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
+WRLINUX_RCPLVERSION = ".2"
 MACHINE = "intel-corei7-64"
 # Set default machine to select in the hob interface
 HOB_MACHINE = "intel-corei7-64"
