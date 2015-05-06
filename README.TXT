@@ -24,13 +24,14 @@ runqemu qemuarm nographic
 
 #----------------OR-------------------#
 
---- Qemu ARM BSP ---
+--- Xilinx-Zynq BSP ---
 
 git clone --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
-. init-qemuarm-env
+. init-xilinx-zynq-env
 bitbake wrlinux-image-glibc-small
 
 # Test with your hardware following the README in xilinx-zynq/README
 # in section 3.1 where the dtb files are found in:
 # tmp/deploy/images/xilinx-zynq/uImage-zynq-*.dtb
+
