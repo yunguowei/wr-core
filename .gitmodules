@@ -54,3 +54,11 @@
 	path = meta-intel
 	url = git://git.yoctoproject.org/meta-intel
 	branch = dizzy
+[submodule "wrlabs-integration"]
+	path = wrlabs-integration
+	url = ../wrlabs-integration
+	branch = LB21_7.0_RCPL0002
+[submodule "xilinx-zynq"]
+	path = xilinx-zynq
+	url = ../xilinx-zynq
+	branch = LB21_7.0_RCPL0004
