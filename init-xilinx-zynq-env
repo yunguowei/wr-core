@@ -46,7 +46,7 @@ export TEMPLATECONF
 
 S_ARGS="$@"
 if [ "$S_ARGS" = "" ] ; then
-   S_ARGS=build-intel-x86
+   S_ARGS=build-xilinx-zynq
 fi
 
 . $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
@@ -56,7 +56,7 @@ if [ $? = 0 ] ; then
    if [ ! -e .configured ] ; then
       perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
 
-      	   for e in wr-kernel wr-base wr-fixes meta-intel meta-networking meta-gnome-subset meta-oe-subset meta-python-subset meta-perl-subset meta-webserver; do
+      	   for e in wrlabs-integration wr-kernel xilinx-zynq wr-base wr-fixes meta-networking meta-gnome-subset meta-oe-subset meta-python-subset meta-perl-subset meta-webserver; do
     	       perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
       done
       perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
@@ -64,12 +64,12 @@ if [ $? = 0 ] ; then
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
 WRLINUX_RCPLVERSION = ".2"
-MACHINE = "intel-corei7-64"
+MACHINE = "xilinx-zynq"
 # Set default machine to select in the hob interface
-HOB_MACHINE = "intel-corei7-64"
+HOB_MACHINE = "xilinx-zynq"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
 LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto"
+PREFERRED_PROVIDER_virtual/kernel_xilinx-zynq = "linux-yocto"
 KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
@@ -82,8 +82,8 @@ IMAGE_CLASSES += "image-prelink"
 IMAGE_CLASSES += "image-export-vars"
 IMAGE_FSTYPES += "tar.bz2"
 NOISO = "1"
+NOHDD = "1"
 IMAGE_FSTYPES += "ext3"
-IMAGE_FSTYPES += "live"
 
 ## Included feature templates
 require `pwd`/../wr-kernel/templates/default/template.conf

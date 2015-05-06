@@ -100,6 +100,8 @@ PNBLACKLIST[linux-yocto-tiny] = ""
 SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
 BBMASK = ""
 
+PREFERRED_VERSION_linux-yocto = "3.14%"
+
 EOF
       touch .configured
    fi
