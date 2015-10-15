@@ -56,7 +56,22 @@ if [ $? = 0 ] ; then
    if [ ! -e .configured ] ; then
       perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
 
-      	   for e in wrlabs-integration wr-kernel xilinx-zynq wr-base wr-fixes meta-networking meta-gnome-subset meta-oe-subset meta-python-subset meta-perl-subset meta-webserver; do
+      	   for e in \
+	       wrlabs-integration \
+	       wr-kernel \
+	       xilinx-zynq \
+	       wr-base \
+	       wr-fixes \
+	       meta-openembedded/meta-networking \
+	       meta-openembedded/meta-gnome \
+	       meta-openembedded/meta-oe \
+	       meta-openembedded/meta-python \
+	       meta-openembedded/meta-perl \
+	       meta-openembedded/meta-webserver \
+	       meta-openembedded/meta-xfce \
+	       meta-virtualization \
+	       oe-meta-go \
+	       meta-overc/meta-pod; do
     	       perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
       done
       perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
@@ -69,7 +84,7 @@ MACHINE = "xilinx-zynq"
 HOB_MACHINE = "xilinx-zynq"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
 LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_xilinx-zynq = "linux-yocto"
+PREFERRED_PROVIDER_virtual/kernel_xilinx-zynq = "linux-yocto-rt"
 KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
@@ -98,9 +113,13 @@ PNBLACKLIST[linux-yocto] = ""
 PNBLACKLIST[linux-yocto-rt] = ""
 PNBLACKLIST[linux-yocto-tiny] = ""
 SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
-BBMASK = ""
+BBMASK = "/meta-oe/recipes-connectivity/zabbix/"
 
 PREFERRED_VERSION_linux-yocto = "3.14%"
+PREFERRED_VERSION_linux-yocto-rt = "3.14%"
+
+DL_DIR = "\${TOPDIR}/../downloads"
+SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
 
 EOF
       touch .configured

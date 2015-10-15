@@ -26,30 +26,6 @@
 	path = wr-fixes
 	url = ../wr-fixes
 	branch = LB21_7.0_RCPL0002
-[submodule "meta-networking"]
-	path = meta-networking
-	url = ../meta-networking
-	branch = LB21_7.0_RCPL0002
-[submodule "meta-gnome-subset"]
-	path = meta-gnome-subset
-	url = ../meta-gnome-subset
-	branch = LB21_7.0_RCPL0002
-[submodule "meta-oe-subset"]
-	path = meta-oe-subset
-	url = ../meta-oe-subset
-	branch = LB21_7.0_RCPL0002
-[submodule "meta-python-subset"]
-	path = meta-python-subset
-	url = ../meta-python-subset
-	branch = LB21_7.0_RCPL0002
-[submodule "meta-perl-subset"]
-	path = meta-perl-subset
-	url = ../meta-perl-subset
-	branch = LB21_7.0_RCPL0002
-[submodule "meta-webserver"]
-	path = meta-webserver
-	url = ../meta-webserver
-	branch = LB21_7.0_RCPL0002
 [submodule "meta-intel"]
 	path = meta-intel
 	url = git://git.yoctoproject.org/meta-intel
@@ -62,3 +38,19 @@
 	path = xilinx-zynq
 	url = ../xilinx-zynq
 	branch = LB21_7.0_RCPL0004
+[submodule "meta-overc"]
+	path = meta-overc
+	url = ../meta-overc
+[submodule "overc-installer"]
+	path = overc-installer
+	url = ../overc-installer
+[submodule "meta-openembedded"]
+	path = meta-openembedded
+	url = git://git.openembedded.org/meta-openembedded
+[submodule "meta-virtualization"]
+	path = meta-virtualization
+	url = git://git.yoctoproject.org/meta-virtualization
+[submodule "oe-meta-go"]
+	path = oe-meta-go
+	url = ../oe-meta-go
+	branch = ovp7-20150902
