@@ -1,19 +1,19 @@
 [submodule "bitbake"]
 	path = bitbake
 	url = ../bitbake
-	branch = LB21_7.0_RCPL0002
+	branch = LB21_7.0_RCPL0010
 [submodule "oe-core"]
 	path = oe-core
 	url = ../oe-core
-	branch = LB21_7.0_RCPL0002
+	branch = LB21_7.0_RCPL0010
 [submodule "wrlinux"]
 	path = wrlinux
 	url = ../wrlinux
-	branch = LB21_7.0_RCPL0002
+	branch = LB21_7.0_RCPL0010
 [submodule "wr-kernel"]
 	path = wr-kernel
 	url = ../wr-kernel
-	branch = LB21_7.0_RCPL0002
+	branch = LB21_7.0_RCPL0010
 [submodule "qemuarm"]
 	path = qemuarm
 	url = ../qemuarm
@@ -21,11 +21,11 @@
 [submodule "wr-base"]
 	path = wr-base
 	url = ../wr-base
-	branch = LB21_7.0_RCPL0002
+	branch = LB21_7.0_RCPL0010
 [submodule "wr-fixes"]
 	path = wr-fixes
 	url = ../wr-fixes
-	branch = LB21_7.0_RCPL0002
+	branch = LB21_7.0_RCPL0010
 [submodule "meta-intel"]
 	path = meta-intel
 	url = git://git.yoctoproject.org/meta-intel
