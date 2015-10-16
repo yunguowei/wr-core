@@ -59,6 +59,7 @@ if [ $? = 0 ] ; then
       	   for e in wrlabs-integration \
 	       wr-kernel \
 	       meta-intel \
+	       meta-intel/meta-isg/meta-valleyisland \
 	       wr-base \
 	       wr-fixes \
 	       meta-openembedded/meta-networking \
@@ -78,12 +79,12 @@ if [ $? = 0 ] ; then
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
 WRLINUX_RCPLVERSION = ".2"
-MACHINE = "intel-corei7-64"
+MACHINE = "valleyisland-64"
 # Set default machine to select in the hob interface
-HOB_MACHINE = "intel-corei7-64"
+HOB_MACHINE = "valleyisland-64"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
 LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto-rt"
+PREFERRED_PROVIDER_virtual/kernel_valleyisland-64 = "linux-yocto-rt"
 KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
