@@ -115,8 +115,7 @@ PNBLACKLIST[linux-yocto-rt] = ""
 PNBLACKLIST[linux-yocto-tiny] = ""
 SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
 # Work arounds for oe-core 1.7
-BBMASK = "/(meta-oe/recipes-connectivity/zabbix/|meta-oe/recipes-gnome/libgudev/|oe-core/meta/recipes-connectivity/bluez/|meta-oe/recipes-connectivity/bluez/)"
-
+BBMASK = "/(meta-oe/recipes-connectivity/zabbix/|meta-oe/recipes-gnome/libgudev/|oe-core/meta/recipes-connectivity/bluez/|meta-openembedded/meta-oe/recipes-connectivity/bluez/bluez-hcidump_2.5.bb)"
 
 PREFERRED_VERSION_linux-yocto = "3.14%"
 PREFERRED_VERSION_linux-yocto-rt = "3.14%"
