@@ -103,6 +103,7 @@ IMAGE_FSTYPES += "live"
 ## Included feature templates
 require `pwd`/../wr-kernel/templates/default/template.conf
 require `pwd`/../wr-base/templates/default/template.conf
+require `pwd`/../wrlabs-integration/templates/default/template.conf
 
 # Kernel overrides
 INHERIT += "blacklist"
