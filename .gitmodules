@@ -5,7 +5,7 @@
 [submodule "oe-core"]
 	path = oe-core
 	url = ../oe-core
-	branch = LB21_7.0_RCPL0010
+	branch = wr-7.0-20141118
 [submodule "wrlinux"]
 	path = wrlinux
 	url = ../wrlinux
