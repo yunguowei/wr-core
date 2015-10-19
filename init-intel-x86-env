@@ -84,7 +84,7 @@ MACHINE = "valleyisland-64"
 HOB_MACHINE = "valleyisland-64"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
 LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_valleyisland-64 = "linux-yocto-rt"
+PREFERRED_PROVIDER_virtual/kernel_valleyisland-64 = "linux-yocto"
 KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd

@@ -84,7 +84,7 @@ MACHINE = "xilinx-zynq"
 HOB_MACHINE = "xilinx-zynq"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
 LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_xilinx-zynq = "linux-yocto-rt"
+PREFERRED_PROVIDER_virtual/kernel_xilinx-zynq = "linux-yocto"
 KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
