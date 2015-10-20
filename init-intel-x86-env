@@ -100,7 +100,7 @@ NOISO = "1"
 IMAGE_FSTYPES += "ext3"
 IMAGE_FSTYPES += "live"
 
-EXTRA_IMAGEDEPENDS += "${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
+EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
 
 ## Included feature templates
 require `pwd`/../wr-kernel/templates/default/template.conf
