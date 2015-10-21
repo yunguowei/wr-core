@@ -31,9 +31,9 @@ fi
 if [ -n "$BBSERVER" ]; then
    unset BBSERVER
 fi
-THIS_SCRIPT=$OEROOT/oe-init-build-env
+THIS_SCRIPT=`dirname $OEROOT`/init-qemuarma9-env
 
-if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" ]; then
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-qemuarma9-env ]; then
    echo "Error: This script needs to be sourced. Please run as '. $THIS_SCRIPT'"
    exit 1
 fi
@@ -46,7 +46,7 @@ export TEMPLATECONF
 
 S_ARGS="$@"
 if [ "$S_ARGS" = "" ] ; then
-   S_ARGS=build-qemuarm
+   S_ARGS=build-qemuarma9
 fi
 
 . $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
@@ -56,20 +56,35 @@ if [ $? = 0 ] ; then
    if [ ! -e .configured ] ; then
       perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
 
-      	   for e in wr-kernel qemuarm wr-base wr-fixes meta-networking meta-gnome-subset meta-oe-subset meta-python-subset meta-perl-subset meta-webserver; do
+      	   for e in \
+	       wrlabs-integration \
+	       wr-kernel \
+	       qemuarma9 \
+	       wr-base \
+	       wr-fixes \
+	       meta-openembedded/meta-networking \
+	       meta-openembedded/meta-gnome \
+	       meta-openembedded/meta-oe \
+	       meta-openembedded/meta-python \
+	       meta-openembedded/meta-perl \
+	       meta-openembedded/meta-webserver \
+	       meta-openembedded/meta-xfce \
+	       meta-virtualization \
+	       oe-meta-go \
+	       meta-overc/meta-pod; do
     	       perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
       done
       perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
 
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
-WRLINUX_RCPLVERSION = ".2"
-MACHINE = "qemuarm"
+WRLINUX_RCPLVERSION = ".10"
+MACHINE = "qemuarma9"
 # Set default machine to select in the hob interface
-HOB_MACHINE = "qemuarm"
+HOB_MACHINE = "qemuarma9"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
 LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_qemuarm = "linux-yocto"
+PREFERRED_PROVIDER_virtual/kernel_qemuarma9 = "linux-yocto"
 KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
@@ -88,6 +103,7 @@ IMAGE_FSTYPES += "ext3"
 ## Included feature templates
 require `pwd`/../wr-kernel/templates/default/template.conf
 require `pwd`/../wr-base/templates/default/template.conf
+require `pwd`/../wrlabs-integration/templates/default/template.conf
 
 # Kernel overrides
 INHERIT += "blacklist"
@@ -98,9 +114,14 @@ PNBLACKLIST[linux-yocto] = ""
 PNBLACKLIST[linux-yocto-rt] = ""
 PNBLACKLIST[linux-yocto-tiny] = ""
 SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
-BBMASK = ""
+# Work arounds for oe-core 1.7
+BBMASK = "/(meta-oe/recipes-connectivity/zabbix/|meta-oe/recipes-gnome/libgudev/)"
 
 PREFERRED_VERSION_linux-yocto = "3.14%"
+PREFERRED_VERSION_linux-yocto-rt = "3.14%"
+
+DL_DIR = "\${TOPDIR}/../downloads"
+SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
 
 EOF
       touch .configured

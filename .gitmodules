@@ -14,10 +14,6 @@
 	path = wr-kernel
 	url = ../wr-kernel
 	branch = LB21_7.0_RCPL0010
-[submodule "qemuarm"]
-	path = qemuarm
-	url = ../qemuarm
-	branch = LB21_7.0_RCPL0002
 [submodule "wr-base"]
 	path = wr-base
 	url = ../wr-base
@@ -54,3 +50,7 @@
 	path = oe-meta-go
 	url = ../oe-meta-go
 	branch = ovp7-20150902
+[submodule "qemuarma9"]
+	path = qemuarma9
+	url = ../qemuarma9
+	branch = LB21_7.0_RCPL0010
