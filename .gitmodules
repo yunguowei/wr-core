@@ -54,3 +54,7 @@
 	path = qemuarma9
 	url = ../qemuarma9
 	branch = LB21_7.0_RCPL0010
+[submodule "qemuarm"]
+	path = qemuarm
+	url = ../qemuarm
+	branch = LB21_7.0_RCPL0010

@@ -1,0 +1,134 @@
+#!/bin/sh
+
+# Copyright (C) 2006-2011 Linux Foundation
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+if [ -n "$BASH_SOURCE" ]; then
+   OEROOT="`dirname $BASH_SOURCE`/oe-core"
+elif [ -n "$ZSH_NAME" ]; then
+   OEROOT="`dirname $0`/oe-core"
+else
+   OEROOT="`pwd`/oe-core"
+fi
+
+if [ -n "$BBSERVER" ]; then
+   unset BBSERVER
+fi
+
+if [ -n "$BBSERVER" ]; then
+   unset BBSERVER
+fi
+THIS_SCRIPT=`dirname $OEROOT`/init-qemuarm-env
+
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-qemuarm-env ]; then
+   echo "Error: This script needs to be sourced. Please run as '. $THIS_SCRIPT'"
+   exit 1
+fi
+
+OEROOT=`readlink -f "$OEROOT"`
+export OEROOT
+
+TEMPLATECONF=$OEROOT/../.template-conf
+export TEMPLATECONF
+
+S_ARGS="$@"
+if [ "$S_ARGS" = "" ] ; then
+   S_ARGS=build-qemuarm
+fi
+
+. $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
+     $OEROOT/scripts/oe-setup-builddir && \
+     [ -n "$BUILDDIR" ] && cd $BUILDDIR
+if [ $? = 0 ] ; then
+   if [ ! -e .configured ] ; then
+      perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
+
+      	   for e in \
+	       wrlabs-integration \
+	       wr-kernel \
+	       qemuarm \
+	       wr-base \
+	       wr-fixes \
+	       meta-openembedded/meta-networking \
+	       meta-openembedded/meta-gnome \
+	       meta-openembedded/meta-oe \
+	       meta-openembedded/meta-python \
+	       meta-openembedded/meta-perl \
+	       meta-openembedded/meta-webserver \
+	       meta-openembedded/meta-xfce \
+	       meta-virtualization \
+	       oe-meta-go \
+	       meta-overc/meta-pod; do
+    	       perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
+      done
+      perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
+
+      cat<<EOF>>conf/local.conf
+DISTRO = "wrlinux-small"
+WRLINUX_RCPLVERSION = ".10"
+MACHINE = "qemuarm"
+# Set default machine to select in the hob interface
+HOB_MACHINE = "qemuarm"
+DEFAULT_IMAGE = "wrlinux-image-glibc-small"
+LINUX_KERNEL_TYPE = "standard"
+PREFERRED_PROVIDER_virtual/kernel_qemuarm = "linux-yocto"
+KTYPE_ENABLED = "standard"
+PACKAGE_CLASSES = "package_rpm"
+# Activate systemd
+VIRTUAL-RUNTIME_init_manager = " systemd "
+DISTRO_FEATURES_append = " systemd"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
+KERNEL_FEATURES_append = " cfg/systemd.scc"
+USER_CLASSES = "buildstats buildstats-summary"
+IMAGE_CLASSES += "image-prelink"
+IMAGE_CLASSES += "image-export-vars"
+IMAGE_FSTYPES += "tar.bz2"
+NOISO = "1"
+NOHDD = "1"
+IMAGE_FSTYPES += "ext3"
+
+## Included feature templates
+require `pwd`/../wr-kernel/templates/default/template.conf
+require `pwd`/../wr-base/templates/default/template.conf
+require `pwd`/../wrlabs-integration/templates/default/template.conf
+
+# Kernel overrides
+INHERIT += "blacklist"
+PNBLACKLIST[linux-windriver] = "Recipe not buildable without local kernel git"
+PNBLACKLIST[linux-windriver-dummy] = "Recipe not buildable without local kernel git"
+# Unblacklist the YP kernel
+PNBLACKLIST[linux-yocto] = ""
+PNBLACKLIST[linux-yocto-rt] = ""
+PNBLACKLIST[linux-yocto-tiny] = ""
+SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
+# EXTRA_BBMASK may be appended in a layer or template
+BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
+
+PREFERRED_VERSION_linux-yocto = "3.14%"
+PREFERRED_VERSION_linux-yocto-rt = "3.14%"
+
+DL_DIR = "\${TOPDIR}/../downloads"
+SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
+
+EOF
+      touch .configured
+   fi
+fi
+unset OEROOT
+unset BBPATH
+unset THIS_SCRIPT
+unset S_ARGS
+unset TEMPLATECONF
