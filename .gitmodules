@@ -62,3 +62,7 @@
 	path = qemuarm
 	url = ../qemuarm
 	branch = LB21_7.0_RCPL0010
+[submodule "wr-tools-debug"]
+	path = wr-tools-debug
+	url = ../wr-tools-debug
+	branch = LB21_7.0_RCPL0010
