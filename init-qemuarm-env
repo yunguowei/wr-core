@@ -62,6 +62,7 @@ if [ $? = 0 ] ; then
 	       qemuarm \
 	       wr-base \
 	       wr-fixes \
+	       wr-tools-debug \
 	       meta-openembedded/meta-networking \
 	       meta-openembedded/meta-gnome \
 	       meta-openembedded/meta-oe \
