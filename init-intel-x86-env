@@ -84,12 +84,12 @@ if [ $? = 0 ] ; then
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
 WRLINUX_RCPLVERSION = ".10"
-MACHINE = "valleyisland-64"
+MACHINE = "intel-corei7-64"
 # Set default machine to select in the hob interface
-HOB_MACHINE = "valleyisland-64"
+HOB_MACHINE = "intel-corei7-64"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
 LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_valleyisland-64 = "linux-yocto"
+PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto"
 KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
