@@ -5,7 +5,7 @@ Quick start instructions.
 git clone --branch beta --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
 . init-intel-x86-env
-bitbake pod-domE pod-dom0 pod-essential
+bitbake cube-domE cube-dom0 cube-essential
 
 ### login: root  password: incendia
 
@@ -16,7 +16,7 @@ bitbake pod-domE pod-dom0 pod-essential
 git clone --branch beta --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
 . init-xilinx-zynq-env
-bitbake pod-server pod-dom0 pod-essential
+bitbake cube-server cube-dom0 cube-essential
 
 ### login: root  password: incendia
 
