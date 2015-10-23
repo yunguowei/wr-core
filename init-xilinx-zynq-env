@@ -17,11 +17,11 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 if [ -n "$BASH_SOURCE" ]; then
-   OEROOT="`dirname $BASH_SOURCE`/oe-core"
+   OEROOT="`dirname $BASH_SOURCE`/layers/oe-core"
 elif [ -n "$ZSH_NAME" ]; then
-   OEROOT="`dirname $0`/oe-core"
+   OEROOT="`dirname $0`/layers/oe-core"
 else
-   OEROOT="`pwd`/oe-core"
+   OEROOT="`pwd`/layers/oe-core"
 fi
 
 if [ -n "$BBSERVER" ]; then
@@ -31,7 +31,10 @@ fi
 if [ -n "$BBSERVER" ]; then
    unset BBSERVER
 fi
-THIS_SCRIPT=`dirname $OEROOT`/init-xilinx-zynq-env
+
+# Figure out the "TOP" relative to TOP/layers/oe-core
+THIS_SCRIPT=`dirname $OEROOT`
+THIS_SCRIPT=$THIS_SCRIPT/init-xilinx-zynq-env
 
 if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-xilinx-zynq-env ]; then
    echo "Error: This script needs to be sourced. Please run as '. $THIS_SCRIPT'"
@@ -41,7 +44,7 @@ fi
 OEROOT=`readlink -f "$OEROOT"`
 export OEROOT
 
-TEMPLATECONF=$OEROOT/../.template-conf
+TEMPLATECONF=$OEROOT/../../.template-conf
 export TEMPLATECONF
 
 S_ARGS="$@"
@@ -102,9 +105,9 @@ NOHDD = "1"
 IMAGE_FSTYPES += "ext3"
 
 ## Included feature templates
-require `pwd`/../wr-kernel/templates/default/template.conf
-require `pwd`/../wr-base/templates/default/template.conf
-require `pwd`/../wrlabs-integration/templates/default/template.conf
+require `pwd`/../layers/wr-kernel/templates/default/template.conf
+require `pwd`/../layers/wr-base/templates/default/template.conf
+require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
 
 # Kernel overrides
 INHERIT += "blacklist"
