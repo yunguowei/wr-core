@@ -2,7 +2,7 @@ Quick start instructions.
 
 --- Intel Minnow Board BSP ---
 
-git clone --branch beta --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
+git clone --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
 . init-intel-x86-env
 bitbake cube-domE cube-dom0 cube-essential
@@ -20,7 +20,7 @@ sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/
 
 --- Xilinx-Zynq BSP ---
 
-git clone --branch beta --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
+git clone --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
 . init-xilinx-zynq-env
 bitbake cube-server cube-dom0 cube-essential
