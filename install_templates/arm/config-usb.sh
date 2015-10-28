@@ -9,11 +9,10 @@ if [ -z "${ARTIFACTS_DIR}" ]; then
     ARTIFACTS_DIR=""
 fi
 
-INSTALL_KERNEL="${ARTIFACTS_DIR}/bzImage"
-INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-genericx86-64.tar.bz2"
+INSTALL_KERNEL="${ARTIFACTS_DIR}/uImage"
+INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"
 INSTALL_MODULES=""
-INSTALL_INITRAMFS="${ARTIFACTS_DIR}/cube-builder-initramfs-intel-corei7-64.cpio.gz"
-INSTALL_EFIBOOT="${ARTIFACTS_DIR}/bootx64.efi"
+INSTALL_INITRAMFS="${ARTIFACTS_DIR}/cube-builder-initramfs-xilinx-zynq.cpio.gz"
 
 INSTALL_GRUBHDCFG="grub-hd.cfg"
 INSTALL_GRUBUSBCFG="grub-usb.cfg"
@@ -21,16 +20,20 @@ INSTALL_GRUBCFG="${INSTALLER_FILES_DIR}/${INSTALL_GRUBUSBCFG}"
 
 INSTALL_FILES="${INSTALL_KERNEL} ${INSTALL_ROOTFS} ${INSTALL_MODULES} ${INSTALL_GRUBCFG}"
 
-HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-graphical-builder-genericx86-64.tar.bz2 \
-                  ${ARTIFACTS_DIR}/cube-builder-genericx86-64.tar.bz2"
+BOARD_NAME="xilinx-zynq"
 
+HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"
+
+HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-xilinx-zynq.tar.bz2 \
+                      ${ARTIFACTS_DIR}/cube-server-xilinx-zynq.tar.bz2:monitored:console \
+"
+INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"
 
 # Uncomment to specify path to init.pp
 #INSTALL_PUPPET_DIR="puppet"
 
 ## List of prerequisite files for the installer to check
 PREREQ_FILES="${INSTALL_FILES}"
-BOARD_NAME="Generic x86"
 EVAL_NAME="Evaluation - OverC"
 
 BOOTPART_START="63s"
@@ -86,13 +89,3 @@ file -L $INSTALL_KERNEL | grep -i x86 >/dev/null 2>&1
 if [ $? -ne 0 ]; then
        export X86_ARCH=false
 fi
-
-if ! $X86_ARCH; then
-	if ! [ -e "$CONFIG_FILE_ARM" ]; then
-		echo "ERROR: Could not find confgiration file (${CONFIG_FILE_ARM}) for ARM architecture."
-		exit 1
-	else
-		source $CONFIG_FILE_ARM
-	fi
-fi
-

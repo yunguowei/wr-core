@@ -25,5 +25,14 @@ cd wr-core
 . init-xilinx-zynq-env
 bitbake cube-server cube-dom0 cube-essential
 
+# Build a bootable image for Picozed board
+../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/arm/Picozed/config-live.sh --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar.img
+
+# Build a bootable image for mini-itx board
+../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/arm/mini-itx/config-live.sh --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar.img
+
+# Build a bootable image for Microzed board
+../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/arm/Microzed/config-live.sh --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar.img
+
 ### login: root  password: incendia
 
