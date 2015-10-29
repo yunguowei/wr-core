@@ -1,13 +1,16 @@
-Quick start instructions.
+Quick start instructions to build Wind River Pulsar Linux
 
 --- Intel Minnow Board BSP ---
 
 git clone --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
+######### The first time only, check for required host packages #########
+./scripts/host_package_install.sh --install --yes
+#########################################################################
 . init-intel-x86-env
 bitbake cube-domE cube-dom0 cube-essential
 
-# Build a bootable image
+# Build a self-bootable image
 sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/intel-x86/config-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar7-minnowboardmax.img
 
 # Build an installer image
@@ -22,6 +25,9 @@ sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/
 
 git clone --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
+######### The first time only, check for required host packages #########
+./scripts/host_package_install.sh --install --yes
+#########################################################################
 . init-xilinx-zynq-env
 bitbake cube-server cube-dom0 cube-essential
 
