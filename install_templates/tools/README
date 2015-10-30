@@ -1,0 +1,8 @@
+smart-channel-deploy.sh:
+
+The script gives user ability to modify smart channels of live
+image on host machine, the usage is as following:
+# sudo ./deploy-config.sh --config <smart-config-file> --image <live image> 
+
+System integrators can import authorized smart config file into their live
+image by using this script.
