@@ -8,7 +8,7 @@ cd wr-core
 bitbake cube-domE cube-dom0 cube-essential
 
 # Build a bootable image
-sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/intel-x86/config-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar.img
+sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/intel-x86/config-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar7-minnowboardmax.img
 
 # Build an installer image
 #DEV=/dev/NBD_DEVICE  or a USB storage device
@@ -28,17 +28,17 @@ bitbake cube-server cube-dom0 cube-essential
 # Build a bootable image for PicoZed board
 sudo ../overc-installer/sbin/cubeit --force \
    --config `pwd`/../install_templates/ZedBoard/PicoZed-live.sh \
-   --artifacts `pwd`/tmp/deploy/images/xilinx-zynq PicoZed-pulsar.img
+   --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar7-avnet-picozed.img
 
 # Build a bootable image for Mini-Itx board
 sudo ../overc-installer/sbin/cubeit --force \
    --config `pwd`/../install_templates/ZedBoard/Mini-Itx-live.sh \
-   --artifacts `pwd`/tmp/deploy/images/xilinx-zynq Mini-Itx-pulsar.img
+   --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar7-avnet-miniitx.img
 
 # Build a bootable image for MicroZed board
 sudo ../overc-installer/sbin/cubeit --force \
    --config `pwd`/../install_templates/ZedBoard/MicroZed-live.sh \
-   --artifacts `pwd`/tmp/deploy/images/xilinx-zynq MicroZed-pulsar.img
+   --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar7-avnet-microzed.img
 
 ### login: root  password: incendia
 
