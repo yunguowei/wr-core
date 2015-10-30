@@ -66,6 +66,8 @@ if [ $? = 0 ] ; then
 	       wr-base \
 	       wr-fixes \
 	       wr-tools-debug \
+	       pulsar \
+	       pulsar/wrll-hac \
 	       meta-overc/meta-cube \
                meta-openembedded/meta-filesystems \
 	       meta-openembedded/meta-networking \
@@ -77,7 +79,9 @@ if [ $? = 0 ] ; then
 	       meta-openembedded/meta-xfce \
 	       meta-virtualization \
 	       oe-meta-go ; do
-    	       perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
+	       if [ -e $OEROOT/../$e ] ; then
+    		   perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
+	       fi
       done
       perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
 
