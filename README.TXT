@@ -33,17 +33,17 @@ bitbake cube-server cube-dom0 cube-essential
 
 # Build a bootable image for PicoZed board
 sudo ../overc-installer/sbin/cubeit --force \
-   --config `pwd`/../install_templates/ZedBoard/PicoZed-live.sh \
+   --config `pwd`/../install_templates/ZedBoard/PicoZed-live.sh --target-config PicoZed-live.sh \
    --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar7-avnet-picozed.img
 
 # Build a bootable image for Mini-Itx board
 sudo ../overc-installer/sbin/cubeit --force \
-   --config `pwd`/../install_templates/ZedBoard/Mini-Itx-live.sh \
+   --config `pwd`/../install_templates/ZedBoard/Mini-Itx-live.sh --target-config Mini-Itx-live.sh \
    --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar7-avnet-miniitx.img
 
 # Build a bootable image for MicroZed board
 sudo ../overc-installer/sbin/cubeit --force \
-   --config `pwd`/../install_templates/ZedBoard/MicroZed-live.sh \
+   --config `pwd`/../install_templates/ZedBoard/MicroZed-live.sh --target-config MicroZed-live.sh \
    --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar7-avnet-microzed.img
 
 ### login: root  password: incendia
