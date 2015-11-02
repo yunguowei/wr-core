@@ -66,8 +66,8 @@ if [ $? = 0 ] ; then
 	       wr-base \
 	       wr-fixes \
 	       wr-tools-debug \
+	       wrll-hac \
 	       pulsar \
-	       pulsar/wrll-hac \
 	       meta-overc/meta-cube \
                meta-openembedded/meta-filesystems \
 	       meta-openembedded/meta-networking \

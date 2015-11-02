@@ -66,3 +66,6 @@
 	path = layers/wr-tools-debug
 	url = ../wr-tools-debug
 	branch = LB21_7.0_RCPL0010
+[submodule "layers/wrll-hac"]
+	path = layers/wrll-hac
+	url = ../wrll-hac
