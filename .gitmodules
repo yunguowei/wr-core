@@ -1,7 +1,7 @@
 [submodule "bitbake"]
 	path = layers/bitbake
 	url = ../bitbake
-	branch = LB21_7.0_RCPL0010
+	branch = wr-7.0-20141118
 [submodule "oe-core"]
 	path = layers/oe-core
 	url = ../oe-core
