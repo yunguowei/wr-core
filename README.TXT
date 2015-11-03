@@ -1,5 +1,8 @@
 Quick start instructions to build Wind River Pulsar Linux
 
+For a more guides, examples and information please see:
+https://knowledge.windriver.com/?cid=pulsar_lx
+
 --- Intel Minnow Board BSP ---
 
 git clone --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
