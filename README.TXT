@@ -15,7 +15,7 @@ bitbake cube-domE cube-dom0 cube-essential
 
 # Build a self-bootable image
 sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/intel-x86/config-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar7-minnowboardmax.img
-# Then dd it to an usb stick or sd card and boot up Pular directly on target
+# Then dd it to an usb stick or sd card and boot up Pulsar directly on target
 
 # Or build an installer image or USB stick
 #DEV=/dev/NBD_DEVICE  or a USB storage device
@@ -63,7 +63,7 @@ sudo ../overc-installer/sbin/cubeit --force \
    --config `pwd`/../install_templates/ZedBoard/MicroZed-live.sh --target-config MicroZed-live.sh \
    --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar7-avnet-microzed.img
 
-# And finally dd it to a micro sd card and boot up Pular directly on target
+# And finally dd it to a micro sd card and boot up Pulsar directly on target
 
 ### login: root  password: incendia
 
