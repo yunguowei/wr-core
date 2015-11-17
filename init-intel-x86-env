@@ -110,6 +110,7 @@ IMAGE_FSTYPES += "tar.bz2"
 NOISO = "1"
 IMAGE_FSTYPES += "ext3"
 IMAGE_FSTYPES += "live"
+IMAGE_ENABLE_CONTAINER = "1"
 
 EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
 
