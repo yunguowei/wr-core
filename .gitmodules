@@ -69,3 +69,6 @@
 [submodule "layers/wrll-hac"]
 	path = layers/wrll-hac
 	url = ../wrll-hac
+[submodule "layers/fsl-ls10xx"]
+	path = layers/fsl-ls10xx
+	url = ../fsl-ls10xx
