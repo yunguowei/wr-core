@@ -72,3 +72,6 @@
 [submodule "layers/fsl-ls10xx"]
 	path = layers/fsl-ls10xx
 	url = ../fsl-ls10xx
+[submodule "layers/meta-gateway"]
+	path = layers/meta-gateway
+	url = ../meta-gateway
