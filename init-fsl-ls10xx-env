@@ -68,6 +68,7 @@ if [ $? = 0 ] ; then
 	       wr-tools-debug \
 	       wrll-hac \
 	       pulsar \
+	       meta-gateway \
 	       meta-overc/meta-cube \
                meta-openembedded/meta-filesystems \
 	       meta-openembedded/meta-networking \
@@ -113,6 +114,7 @@ IMAGE_ENABLE_CONTAINER = "1"
 ## Included feature templates
 require `pwd`/../layers/wr-kernel/templates/default/template.conf
 require `pwd`/../layers/wr-base/templates/default/template.conf
+require `pwd`/../layers/meta-gateway/templates/default/template.conf
 require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
 
 # Kernel overrides
