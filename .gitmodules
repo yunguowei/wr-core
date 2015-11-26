@@ -17,7 +17,7 @@
 [submodule "wr-base"]
 	path = layers/wr-base
 	url = ../wr-base
-	branch = LB21_7.0_RCPL0010
+	branch = LB21_7.0_RCPL0012
 [submodule "wr-fixes"]
 	path = layers/wr-fixes
 	url = ../wr-fixes
