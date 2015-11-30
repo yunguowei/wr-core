@@ -66,12 +66,15 @@
 	path = layers/wr-tools-debug
 	url = ../wr-tools-debug
 	branch = LB21_7.0_RCPL0010
-[submodule "layers/wrll-hac"]
+[submodule "wrll-hac"]
 	path = layers/wrll-hac
 	url = ../wrll-hac
-[submodule "layers/fsl-ls10xx"]
+	branch = master
+[submodule "fsl-ls10xx"]
 	path = layers/fsl-ls10xx
 	url = ../fsl-ls10xx
-[submodule "layers/meta-gateway"]
+	branch = LB21_7.0_RCPL0011
+[submodule "meta-gateway"]
 	path = layers/meta-gateway
 	url = ../meta-gateway
+	branch = master
