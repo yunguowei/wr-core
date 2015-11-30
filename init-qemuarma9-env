@@ -107,7 +107,6 @@ IMAGE_FSTYPES += "tar.bz2"
 NOISO = "1"
 NOHDD = "1"
 IMAGE_FSTYPES += "ext3"
-IMAGE_ENABLE_CONTAINER = "1"
 
 ## Included feature templates
 require `pwd`/../layers/wr-kernel/templates/default/template.conf
