@@ -73,7 +73,7 @@
 [submodule "fsl-ls10xx"]
 	path = layers/fsl-ls10xx
 	url = ../fsl-ls10xx
-	branch = LB21_7.0_RCPL0011
+	branch = beta
 [submodule "meta-gateway"]
 	path = layers/meta-gateway
 	url = ../meta-gateway
