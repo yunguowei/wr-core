@@ -1,0 +1,6 @@
+source config-usb.sh
+
+INSTALL_DTB="${ARTIFACTS_DIR}/uImage-zynq-picozed.dtb"
+INSTALL_BOOTLOADER="${ARTIFACTS_DIR}/BOOT-PZ7010.BIN"
+
+CONFIG_DIRS=`dirname $BASH_SOURCE`
