@@ -11,6 +11,7 @@ my_local_post_func()
     ln -sf /dev/null ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/systemd-networkd.service
     perl -p -i -e 's#cube-server#cube-gw#' ${TMPMNT}/etc/cube-cmd-server.conf
     perl -p -i -e 's#cube-server#cube-gw#' ${TMPMNT}/var/lib/lxc/dom0/rootfs/etc/cube-cmd-server.conf
+    perl -p -i -e "s#option ifname 'wlan0'#option ifname 'eth1 eth2 wlan0'#" ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/config/network
     cat<<EOF>${TMPMNT}/var/lib/lxc/dom0/rootfs/etc/systemd/network/bridge.network
 [Match]
 Name=br0
