@@ -82,10 +82,4 @@ DEBUG_LEVEL=${DEBUG_DEFAULT}
 
 : ${TRACE:=0}
 
-CONFIG_FILE_ARM="config-usb-arm.sh"
-export X86_ARCH=true
-#get the target's architecture, x86 or not x86?
-file -L $INSTALL_KERNEL | grep -i x86 >/dev/null 2>&1
-if [ $? -ne 0 ]; then
-       export X86_ARCH=false
-fi
+export X86_ARCH=false
