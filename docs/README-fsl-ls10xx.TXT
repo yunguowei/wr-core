@@ -1,5 +1,5 @@
 Quick start instructions to build Wind River Pulsar Linux
-for the Freescale LS1021a-IOT board.
+for the NXP LS1021a-IOT board.
 
 For a more guides, examples and information please see:
 https://knowledge.windriver.com/?cid=pulsar_lx
