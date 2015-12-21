@@ -73,7 +73,6 @@ if [ $? = 0 ] ; then
 	       wr-tools-debug \
 	       wrll-hac \
 	       pulsar \
-	       $PROPRIETARY_LAYER \
 	       meta-gateway \
 	       meta-overc/meta-cube \
                meta-openembedded/meta-filesystems \
@@ -85,6 +84,7 @@ if [ $? = 0 ] ; then
 	       meta-openembedded/meta-webserver \
 	       meta-openembedded/meta-xfce \
 	       meta-virtualization \
+	       $PROPRIETARY_LAYER \
 	       oe-meta-go ; do
 	       if [ -e $OEROOT/../$e ] ; then
     		   perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
