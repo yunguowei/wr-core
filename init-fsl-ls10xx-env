@@ -55,6 +55,11 @@ fi
 . $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
      $OEROOT/scripts/oe-setup-builddir && \
      [ -n "$BUILDDIR" ] && cd $BUILDDIR
+
+if [ "$ALLOW_PROPRIETARY" = "1" ] ; then
+     PROPRIETARY_LAYER=vendor-proprietary
+fi
+
 if [ $? = 0 ] ; then
    if [ ! -e .configured ] ; then
       perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
@@ -68,6 +73,7 @@ if [ $? = 0 ] ; then
 	       wr-tools-debug \
 	       wrll-hac \
 	       pulsar \
+	       $PROPRIETARY_LAYER \
 	       meta-gateway \
 	       meta-overc/meta-cube \
                meta-openembedded/meta-filesystems \
@@ -84,6 +90,7 @@ if [ $? = 0 ] ; then
     		   perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
 	       fi
       done
+      unset PROPRIETARY_LAYER
       perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
 
       cat<<EOF>>conf/local.conf

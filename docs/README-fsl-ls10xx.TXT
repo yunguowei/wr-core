@@ -16,6 +16,11 @@ cd wr-core
 ./scripts/host_package_install.sh --install --yes
 #########################################################################
 
+# Decide if you want to enable the proprietary licensed ethernet switch
+export ALLOW_PROPRIETARY=1
+
+# Create a work space
+
 . init-fsl-ls10xx-env
 bitbake cube-domE cube-dom0 cube-essential
 

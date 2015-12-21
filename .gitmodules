@@ -78,3 +78,7 @@
 	path = layers/meta-gateway
 	url = ../meta-gateway
 	branch = master
+[submodule "vendor-proprietary"]
+	path = layers/vendor-proprietary
+	url = ../vendor-proprietary
+	branch = master
