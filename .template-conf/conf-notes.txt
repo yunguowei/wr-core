@@ -4,3 +4,4 @@ Common targets are:
     cube-dom0 
     cube-domE
     cube-server
+    cube-gw
