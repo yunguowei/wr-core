@@ -11,5 +11,19 @@ my_local_post_func()
     ln -sf /dev/null ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/systemd-networkd.service
     perl -p -i -e 's#cube-server#cube-gw#' ${TMPMNT}/etc/cube-cmd-server.conf
     perl -p -i -e 's#cube-server#cube-gw#' ${TMPMNT}/var/lib/lxc/dom0/rootfs/etc/cube-cmd-server.conf
+    cat<<EOF>${TMPMNT}/var/lib/lxc/dom0/rootfs/etc/systemd/network/bridge.network
+[Match]
+Name=br0
+
+[Network]
+Address=192.168.100.101/24
+EOF
+    cat<<EOF>${TMPMNT}/etc/systemd/network/bridge.network
+[Match]
+Name=br0
+
+[Network]
+Address=192.168.100.100/24
+EOF
 }
 
