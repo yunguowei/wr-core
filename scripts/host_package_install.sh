@@ -98,7 +98,7 @@ log() {
 }
 
 #check for redhat/fedora
-if [ -e /usr/bin/yum ] && [ ! -e /usr/bin/dpkg ] ; then
+if [ -e /usr/bin/yum ] && [ -e /etc/redhat-release ]; then
     install_program="yum $opt_yes install"
 
     #detect Fedora
@@ -120,7 +120,7 @@ if [ -e /usr/bin/yum ] && [ ! -e /usr/bin/dpkg ] ; then
     else
         distro=RH7
     fi
-elif [ -e /usr/bin/dpkg ]; then
+elif [ -e /usr/bin/dpkg ] && [ -e /etc/debian_version ]; then
     #wrlinux only supports Ubuntu LTS releases, but the
     #12.04 package list works for Debian squeeze/wheezy
     install_program="apt-get $opt_yes install"
@@ -131,7 +131,7 @@ elif [ -e /usr/bin/dpkg ]; then
     else
         distro=U1204
     fi
-elif [ -e /usr/bin/zypper ]; then
+elif [ -e /usr/bin/zypper ] && [ -e /etc/SuSE-release ]; then
     if [ -n "$opt_yes" ]; then
         opt_yes='-n'
     fi
