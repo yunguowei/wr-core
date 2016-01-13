@@ -82,3 +82,6 @@
 	path = layers/vendor-proprietary
 	url = ../vendor-proprietary
 	branch = master
+[submodule "meta-cloud-services"]
+	path = layers/meta-cloud-services
+	url = git://git.yoctoproject.org/meta-cloud-services

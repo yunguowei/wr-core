@@ -75,6 +75,7 @@ if [ $? = 0 ] ; then
 	       pulsar \
 	       meta-gateway \
 	       meta-overc/meta-cube \
+	       meta-cloud-servivces \
                meta-openembedded/meta-filesystems \
 	       meta-openembedded/meta-networking \
 	       meta-openembedded/meta-gnome \
