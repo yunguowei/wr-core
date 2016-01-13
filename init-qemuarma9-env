@@ -69,7 +69,7 @@ if [ $? = 0 ] ; then
 	       wrll-hac \
 	       pulsar \
 	       meta-overc/meta-cube \
-	       meta-cloud-servivces \
+	       meta-cloud-services \
                meta-openembedded/meta-filesystems \
 	       meta-openembedded/meta-networking \
 	       meta-openembedded/meta-gnome \
