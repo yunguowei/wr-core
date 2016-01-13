@@ -85,4 +85,4 @@
 [submodule "meta-cloud-services"]
 	path = layers/meta-cloud-services
 	url = git://git.yoctoproject.org/meta-cloud-services
-	branch =master
+	branch = master
