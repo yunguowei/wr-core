@@ -1,27 +1,27 @@
 [submodule "bitbake"]
 	path = layers/bitbake
 	url = ../bitbake
-	branch = wr-7.0-20141118
+	branch = wr-8.0-20151119
 [submodule "oe-core"]
 	path = layers/oe-core
 	url = ../oe-core
-	branch = wr-7.0-20141118
+	branch = wr-8.0-20151119
 [submodule "wrlinux"]
 	path = layers/wrlinux
 	url = ../wrlinux
-	branch = LB21_7.0_RCPL0010
+	branch = LB13_8.0_RCPL0001
 [submodule "wr-kernel"]
 	path = layers/wr-kernel
 	url = ../wr-kernel
-	branch = LB21_7.0_RCPL0010
+	branch = LB13_8.0_RCPL0001
 [submodule "wr-base"]
 	path = layers/wr-base
 	url = ../wr-base
-	branch = LB21_7.0_RCPL0012
+	branch = LB13_8.0_RCPL0001
 [submodule "wr-fixes"]
 	path = layers/wr-fixes
 	url = ../wr-fixes
-	branch = LB21_7.0_RCPL0010
+	branch = LB13_8.0_RCPL0001
 [submodule "meta-intel"]
 	path = layers/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
@@ -29,10 +29,11 @@
 [submodule "wrlabs-integration"]
 	path = layers/wrlabs-integration
 	url = ../wrlabs-integration
-	branch = LB21_7.0_RCPL0002
+	branch = LB13_8.0_RCPL0001
 [submodule "xilinx-zynq"]
 	path = layers/xilinx-zynq
 	url = ../xilinx-zynq
+#	branch = LB13_8.0_RCPL0001
 	branch = LB21_7.0_RCPL0010
 [submodule "meta-overc"]
 	path = layers/meta-overc
@@ -57,15 +58,15 @@
 [submodule "qemuarma9"]
 	path = layers/qemuarma9
 	url = ../qemuarma9
-	branch = LB21_7.0_RCPL0010
+	branch = LB13_8.0_RCPL0001
 [submodule "qemuarm"]
 	path = layers/qemuarm
 	url = ../qemuarm
-	branch = LB21_7.0_RCPL0010
+	branch = LB13_8.0_RCPL0001
 [submodule "wr-tools-debug"]
 	path = layers/wr-tools-debug
 	url = ../wr-tools-debug
-	branch = LB21_7.0_RCPL0010
+	branch = LB13_8.0_RCPL0001
 [submodule "wrll-hac"]
 	path = layers/wrll-hac
 	url = ../wrll-hac
