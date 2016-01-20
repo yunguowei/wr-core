@@ -86,3 +86,7 @@
 	path = layers/meta-cloud-services
 	url = git://git.yoctoproject.org/meta-cloud-services
 	branch = master
+[submodule "meta-browser"]
+	path = layers/meta-browser
+	url = git://github.com/OSSystems/meta-browser.git
+	branch = master
