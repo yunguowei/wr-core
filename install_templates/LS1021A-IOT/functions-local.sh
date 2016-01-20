@@ -12,7 +12,33 @@ my_local_post_func()
     ln -sf /dev/null ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/systemd-networkd.service
     rm -f ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/systemd-resolved.service
     ln -sf /dev/null ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/systemd-resolved.service
-    perl -p -i -e "s#option ifname 'wlan0'#option ifname 'eth2 vethdom0 wlan0'#" ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/config/network
+    cat<<EOF>${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/config/network
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config interface 'wan'
+	option ifname 'eth0'
+	option proto 'dhcp'
+
+config interface 'lan'
+	option ifname 'eth2 vethdom0 wlan0'
+	option type 'bridge'
+	option proto 'static'
+	option ipaddr '192.168.10.1'
+	option netmask '255.255.255.0'
+
+config device 'modem_cell'
+	option name 'modem_cell'
+	option present 'No'
+
+config device 'sim_card'
+	option name 'sim_card'
+	option present 'No'
+
+EOF
     cat<<EOF>>${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/config/dhcp
 
 config host
