@@ -36,11 +36,15 @@ verify_root_user()
 if ! [ -e "$CONFIG_FILE" ]; then
 	usage
 	exit 1
+else
+	CONFIG_FILE=`readlink -f $CONFIG_FILE`
 fi
 
 if ! [ -e "$IMAGE" ]; then
         usage
 	exit 1
+else
+	IMAGE=`readlink -f $IMAGE`
 fi
 
 verify_root_user
@@ -88,16 +92,14 @@ fi
 echo "[INFO] deploy $CONFIG_FILE to essential"
 cp -f $CONFIG_FILE var/lib/smart/config
 
-echo "[INFO] deploy $CONFIG_FILE to dom0"
-cp -f $CONFIG_FILE var/lib/lxc/dom0/rootfs/var/lib/smart/config
+CN=`ls var/lib/lxc`
 
-if [ -e "var/lib/lxc/domE/rootfs/var/lib/smart" ]; then
-	echo "[INFO] deploy $CONFIG_FILE to domE"
-	cp -f $CONFIG_FILE var/lib/lxc/domE/rootfs/var/lib/smart/config
-elif [ -e "var/lib/lxc/server/rootfs/var/lib/smart" ]; then
-	echo "[INFO] deploy $CONFIG_FILE to server"
-	cp -f $CONFIG_FILE var/lib/lxc/server/rootfs/var/lib/smart/config
-fi
+for cn in $CN; do
+	if [ -d var/lib/lxc/$cn/rootfs/var/lib/smart ]; then
+		echo "[INFO] deploy $CONFIG_FILE to $cn"
+		cp -f $CONFIG_FILE var/lib/lxc/$cn/rootfs/var/lib/smart/config
+	fi
+done
 
 echo "[INFO] clean up the system"
 umount var/lib/lxc
