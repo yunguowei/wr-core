@@ -71,6 +71,7 @@ if [ $? = 0 ] ; then
 	       meta-gateway \
 	       meta-overc/meta-cube \
 	       meta-cloud-services \
+               meta-browser \
                meta-openembedded/meta-filesystems \
 	       meta-openembedded/meta-networking \
 	       meta-openembedded/meta-gnome \
