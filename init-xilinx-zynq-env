@@ -90,7 +90,6 @@ if [ $? = 0 ] ; then
 
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
-WRLINUX_RCPLVERSION = ".10"
 MACHINE = "xilinx-zynq"
 # Set default machine to select in the hob interface
 HOB_MACHINE = "xilinx-zynq"
