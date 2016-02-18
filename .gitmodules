@@ -29,7 +29,7 @@
 [submodule "wrlabs-integration"]
 	path = layers/wrlabs-integration
 	url = ../wrlabs-integration
-	branch = LB21_7.0_RCPL0002
+	branch= pulsar-7.0
 [submodule "xilinx-zynq"]
 	path = layers/xilinx-zynq
 	url = ../xilinx-zynq
@@ -77,7 +77,7 @@
 [submodule "meta-gateway"]
 	path = layers/meta-gateway
 	url = ../meta-gateway
-	branch = master
+	branch = pulsar-7.0
 [submodule "vendor-proprietary"]
 	path = layers/vendor-proprietary
 	url = ../vendor-proprietary
