@@ -37,11 +37,11 @@
 [submodule "meta-overc"]
 	path = layers/meta-overc
 	url = ../meta-overc
-	branch = master
+	branch = pulsar-7.0
 [submodule "overc-installer"]
 	path = overc-installer
 	url = ../overc-installer
-	branch = master
+	branch = pulsar-7.0
 [submodule "meta-openembedded"]
 	path = layers/meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
@@ -81,7 +81,7 @@
 [submodule "vendor-proprietary"]
 	path = layers/vendor-proprietary
 	url = ../vendor-proprietary
-	branch = master
+	branch = pulsar-7.0
 [submodule "meta-cloud-services"]
 	path = layers/meta-cloud-services
 	url = git://git.yoctoproject.org/meta-cloud-services
