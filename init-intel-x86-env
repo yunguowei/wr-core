@@ -72,8 +72,10 @@ if [ $? = 0 ] ; then
 	       meta-overc/meta-cube \
 	       meta-cloud-services \
                meta-browser \
+               meta-openembedded/meta-initramfs \
                meta-openembedded/meta-filesystems \
 	       meta-openembedded/meta-networking \
+	       meta-openembedded/meta-multimedia \
 	       meta-openembedded/meta-gnome \
 	       meta-openembedded/meta-oe \
 	       meta-openembedded/meta-python \
@@ -104,11 +106,11 @@ KTYPE_ENABLED = "standard"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
 VIRTUAL-RUNTIME_init_manager = " systemd "
-DISTRO_FEATURES_append = " systemd"
+VIRTUAL-RUNTIME_syslog = "sysklogd"
+DISTRO_FEATURES_append = " systemd x11 opengl"
 DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
 KERNEL_FEATURES_append = " cfg/systemd.scc"
 USER_CLASSES = "buildstats buildstats-summary"
-IMAGE_CLASSES += "image-export-vars"
 IMAGE_FSTYPES += "tar.bz2"
 NOISO = "1"
 IMAGE_FSTYPES += "ext3"
@@ -134,11 +136,13 @@ SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.gi
 # EXTRA_BBMASK may be appended in a layer or template
 BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
 
-PREFERRED_VERSION_linux-yocto = "3.14%"
-PREFERRED_VERSION_linux-yocto-rt = "3.14%"
+PREFERRED_VERSION_linux-yocto = "4.1%"
+PREFERRED_VERSION_linux-yocto-rt = "4.1%"
 
 DL_DIR = "\${TOPDIR}/../downloads"
 SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
+
+PNWHITELIST_LAYERS_forcevariable = ""
 
 EOF
       touch .configured

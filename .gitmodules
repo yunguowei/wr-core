@@ -29,7 +29,7 @@
 [submodule "wrlabs-integration"]
 	path = layers/wrlabs-integration
 	url = ../wrlabs-integration
-	branch = LB13_8.0_RCPL0001
+	branch = pulsar-8
 [submodule "xilinx-zynq"]
 	path = layers/xilinx-zynq
 	url = ../xilinx-zynq
@@ -38,7 +38,7 @@
 [submodule "meta-overc"]
 	path = layers/meta-overc
 	url = ../meta-overc
-	branch = master
+	branch = pulsar-8
 [submodule "overc-installer"]
 	path = overc-installer
 	url = ../overc-installer
