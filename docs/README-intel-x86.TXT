@@ -8,7 +8,7 @@ For official images please visit:
 http://pulsar.windriver.com
 
 ############## Quick start clip here ###################
-git clone --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
+git clone -b pulsar-7.0 --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
 
 ######### The first time only, check for required host packages #########
