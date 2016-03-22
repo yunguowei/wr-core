@@ -139,6 +139,12 @@ PREFERRED_VERSION_linux-yocto-rt = "3.14%"
 DL_DIR = "\${TOPDIR}/../downloads"
 SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
 
+PREMIRRORS_append := "\\
+    http://.*/.* file://\${TOPDIR}/../premirrors7/ \n \\
+    https://.*/.* file://\${TOPDIR}/../premirrors7/ \n \\
+    hg://.*/.* file://\${TOPDIR}/../premirrors7/ \n \\
+"
+
 EOF
       touch .configured
    fi

@@ -90,3 +90,7 @@
 	path = layers/meta-browser
 	url = git://github.com/OSSystems/meta-browser.git
 	branch = master
+[submodule "premirrors7"]
+	path = premirrors7
+	url = ../premirrors7
+	branch = master
