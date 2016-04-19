@@ -32,7 +32,7 @@ HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-graphical-builder-genericx86-64.tar.bz2 
 PREREQ_FILES="${INSTALL_FILES}"
 BOARD_NAME="Generic x86"
 EVAL_NAME="Evaluation - OverC"
-DISTRIBUTION="Pulsar Linux 7"
+DISTRIBUTION="Pulsar Linux 8"
 
 BOOTPART_START="63s"
 BOOTPART_END="250M"
