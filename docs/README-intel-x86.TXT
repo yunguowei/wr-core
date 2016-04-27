@@ -18,8 +18,8 @@ cd wr-core
 . init-intel-x86-env
 bitbake cube-domE cube-dom0 cube-essential
 
-# Build a self-bootable image
-sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/MinnowBoardMax/MinnowBoardMax-live.sh --target-config MinnowBoardMax-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar7-minnowboardmax.img
+# Build a self-bootable image for MinnowBoardMax board
+sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/MinnowBoardMax/MinnowBoardMax-live.sh --target-config MinnowBoardMax-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-minnowboardmax.img
 # Then dd it to an usb stick or sd card and boot up Pulsar directly on target
 
 # Or build an installer image or USB stick
@@ -32,11 +32,15 @@ cd /opt/installer
 # After installation, reboot the target and unplug the usb installer stick, Pulsar will
 # boot up from installed local storage device
 
-### login: root  password: incendia
+# Build a self-bootable image for ComputeStick board
+sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/ComputeStick/ComputeStick-live.sh --target-config ComputeStick-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-computestick.img
+# Then dd it to an usb stick or sd card and boot up Pulsar directly on target
+
+### login: root  password: root
 
 ### Optionally simulate the image with kvm/qemu
 
-kvm -drive file=pulsar7-minnowboardmax.img,if=virtio -m 2000 -nographic -vnc :3 -serial mon:stdio -vga vmware
+kvm -drive file=pulsar8-minnowboardmax.img,if=virtio -m 2000 -nographic -vnc :3 -serial mon:stdio -vga vmware
 
 # Note: The terminal is your serial port, and you can access the
 #       grapics console by starting: vncviewer $YOUR_SERVER_IP:3
