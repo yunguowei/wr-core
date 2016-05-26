@@ -25,9 +25,11 @@ BOARD_NAME="xilinx-zynq"
 HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"
 
 HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-xilinx-zynq.tar.bz2 \
-                      ${ARTIFACTS_DIR}/cube-server-xilinx-zynq.tar.bz2:monitored:console:privileged \
+                      ${ARTIFACTS_DIR}/cube-server-xilinx-zynq.tar.bz2:monitored:console:privileged:net=1 \
 "
 INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"
+
+NETWORK_DEVICE="eth0"
 
 # Uncomment to specify path to init.pp
 #INSTALL_PUPPET_DIR="puppet"
