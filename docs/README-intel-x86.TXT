@@ -16,7 +16,7 @@ cd wr-core
 #########################################################################
 
 . init-intel-x86-env
-bitbake cube-domE cube-dom0 cube-essential
+bitbake cube-desktop cube-dom0 cube-essential
 
 # Build a self-bootable image for MinnowBoardMax board
 sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/MinnowBoardMax/MinnowBoardMax-live.sh --target-config MinnowBoardMax-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-minnowboardmax.img
