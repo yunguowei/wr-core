@@ -46,7 +46,7 @@
 [submodule "meta-openembedded"]
 	path = layers/meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
-	branch = master
+	branch = jethro
 [submodule "meta-virtualization"]
 	path = layers/meta-virtualization
 	url = git://git.yoctoproject.org/meta-virtualization
