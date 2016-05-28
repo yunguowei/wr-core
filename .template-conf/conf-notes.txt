@@ -2,6 +2,6 @@ Common targets are:
 
     cube-essential 
     cube-dom0 
-    cube-domE
+    cube-desktop
     cube-server
     cube-gw
