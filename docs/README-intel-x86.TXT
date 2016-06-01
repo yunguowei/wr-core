@@ -33,10 +33,6 @@ cd /opt/installer
 # After installation, reboot the target and unplug the usb installer stick, Pulsar will
 # boot up from installed local storage device
 
-# Build a self-bootable image for ComputeStick board
-sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/ComputeStick/ComputeStick-live.sh --target-config ComputeStick-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-computestick.img
-# Then dd it to an usb stick or sd card and boot up Pulsar directly on target
-
 ### login: root  password: root
 
 ### Optionally simulate the image with kvm/qemu
