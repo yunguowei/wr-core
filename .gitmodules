@@ -33,8 +33,7 @@
 [submodule "xilinx-zynq"]
 	path = layers/xilinx-zynq
 	url = ../xilinx-zynq
-#	branch = LB13_8.0_RCPL0001
-	branch = LB21_7.0_RCPL0010
+	branch = pulsar-8
 [submodule "meta-overc"]
 	path = layers/meta-overc
 	url = ../meta-overc
