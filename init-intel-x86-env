@@ -82,6 +82,7 @@ if [ $? = 0 ] ; then
 	       meta-openembedded/meta-perl \
 	       meta-openembedded/meta-webserver \
 	       meta-openembedded/meta-xfce \
+	       external-binaries \
 	       meta-virtualization \
 	       oe-meta-go ; do
 	       if [ -e $OEROOT/../$e ] ; then
