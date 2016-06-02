@@ -94,3 +94,7 @@
         path = layers/meta-security
         url = git://git.yoctoproject.org/meta-security
         branch = master
+[submodule "external-binaries"]
+	path = layers/external-binaries
+	url = ../external-binaries
+	branch = master
