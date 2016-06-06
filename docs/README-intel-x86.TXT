@@ -42,3 +42,9 @@ kvm -drive file=pulsar8-intelcubedesktop.img,if=virtio -m 2000 -nographic -vnc :
 # Note: The terminal is your serial port, and you can access the
 #       grapics console by starting: vncviewer $YOUR_SERVER_IP:3
 
+# Note: Audio controls with Pulse Audio
+#       From command line run: alsamixer
+#       For UI run: pavucontrol
+#       For UI desktop control add the PulseAudio control pannel:
+#          Right click in the middle of the bar at the top of the screen
+#          Panel->Add New Items->PulseAudio Plugin ## then click Add
