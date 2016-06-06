@@ -138,9 +138,9 @@ SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
 PNWHITELIST_LAYERS_forcevariable = ""
 
 PREMIRRORS_append := "\\
-    http://.*/.* file://\${TOPDIR}/../downloads/ \n \\
-    https://.*/.* file://\${TOPDIR}/../downloads/ \n \\
-    hg://.*/.* file://\${TOPDIR}/../downloads/ \n \\
+    http://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
+    https://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
+    hg://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
 "
 
 EOF
