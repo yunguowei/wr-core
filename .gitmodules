@@ -98,3 +98,7 @@
 	path = layers/external-binaries
 	url = ../external-binaries
 	branch = master
+[submodule "premirrors8"]
+	path = premirrors8
+	url = ../premirrors8
+	branch = master
