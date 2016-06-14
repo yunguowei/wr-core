@@ -93,7 +93,7 @@ if [ $? = 0 ] ; then
 
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
-WRLINUX_RCPLVERSION = ".10"
+WRLINUX_RCPLVERSION = ".6"
 MACHINE = "intel-corei7-64"
 # Set wide compatibility with core2 processors
 DEFAULTTUNE = "core2-64"
