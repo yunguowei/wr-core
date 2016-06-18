@@ -117,6 +117,9 @@ NOISO = "1"
 IMAGE_FSTYPES += "ext3"
 IMAGE_FSTYPES += "live"
 
+MULTILIBS = "multilib:lib32"
+DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
+
 EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
 
 ## Included feature templates
