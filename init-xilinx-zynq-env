@@ -130,7 +130,7 @@ SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.gi
 BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
 
 PREFERRED_VERSION_linux-yocto = "4.1%"
-PREFERRED_VERSION_linux-yocto-rt = "4.1%"
+#PREFERRED_VERSION_linux-yocto-rt = "4.1%"
 
 DL_DIR = "\${TOPDIR}/../downloads"
 SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
