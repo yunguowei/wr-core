@@ -66,10 +66,6 @@
 	path = layers/wr-tools-debug
 	url = ../wr-tools-debug
 	branch = LB13_8.0_RCPL0001
-[submodule "wrll-hac"]
-	path = layers/wrll-hac
-	url = ../wrll-hac
-	branch = master
 [submodule "fsl-ls10xx"]
 	path = layers/fsl-ls10xx
 	url = ../fsl-ls10xx
@@ -101,4 +97,8 @@
 [submodule "premirrors8"]
 	path = premirrors8
 	url = ../premirrors8
+	branch = master
+[submodule "wr-hac-agent"]
+	path = layers/wr-hac-agent
+	url = ../wr-hac-agent
 	branch = master
