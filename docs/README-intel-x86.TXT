@@ -29,7 +29,7 @@ sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/
 # Then plug the USB installer stick into target, boot it up and run the
 # installation(Here suppose the storage device you want to install to is $DEV):
 cd /opt/installer
-./sbin/cubeit-install -b images/cube-essential-* $DEV
+./sbin/cubeit-installer -b images/cube-essential-* $DEV
 # After installation, reboot the target and unplug the usb installer stick, Pulsar will
 # boot up from installed local storage device
 
