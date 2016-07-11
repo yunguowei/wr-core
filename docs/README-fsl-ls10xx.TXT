@@ -39,7 +39,7 @@ bitbake cube-gw cube-dom0 cube-essential
 sudo ../overc-installer/sbin/cubeit --force \
    --config `pwd`/../install_templates/LS1021A-IOT/LS1021A-IOT-gw-live.sh \
    --target-config LS1021A-IOT-gw-live.sh \
-   --artifacts `pwd`/tmp/deploy/images/fsl-ls10xx pulsar7-fsl-ls1021aiot.img
+   --artifacts `pwd`/tmp/deploy/images/fsl-ls10xx pulsar8-fsl-ls1021aiot.img
 
 # And finally dd it to a micro sd card and boot up Pulsar directly on target
 
