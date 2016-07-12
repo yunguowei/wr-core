@@ -41,7 +41,7 @@
 [submodule "overc-installer"]
 	path = overc-installer
 	url = ../overc-installer
-	branch = 2016-06-21
+	branch = pulsar-8
 [submodule "meta-openembedded"]
 	path = layers/meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
