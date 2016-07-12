@@ -26,7 +26,7 @@ NETWORK_DEVICE="all"
 
 HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-fsl-ls10xx.tar.bz2"
 
-HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-fsl-ls10xx.tar.bz2:vty=2 \
+HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-fsl-ls10xx.tar.bz2:console:vty=2 \
                       ${ARTIFACTS_DIR}/cube-desktop-fsl-ls10xx.tar.bz2:monitored:console:vty=3 \
 "
 INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-fsl-ls10xx.tar.bz2"

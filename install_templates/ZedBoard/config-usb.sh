@@ -24,7 +24,7 @@ BOARD_NAME="xilinx-zynq"
 
 HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"
 
-HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-xilinx-zynq.tar.bz2:mergepath=/usr,essential \
+HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-xilinx-zynq.tar.bz2:console:mergepath=/usr,essential \
                       ${ARTIFACTS_DIR}/cube-server-xilinx-zynq.tar.bz2:monitored:console:privileged:net=1:mergepath=/usr,essential,dom0 \
 "
 INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"

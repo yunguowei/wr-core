@@ -24,7 +24,7 @@ BOARD_NAME="qemuarma9"
 
 HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-qemuarma9.tar.bz2"
 
-HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-qemuarma9.tar.bz2 \
+HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-qemuarma9.tar.bz2:console \
                       ${ARTIFACTS_DIR}/cube-server-qemuarma9.tar.bz2:monitored:console \
 "
 INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-qemuarma9.tar.bz2"
