@@ -69,7 +69,7 @@
 [submodule "fsl-ls10xx"]
 	path = layers/fsl-ls10xx
 	url = ../fsl-ls10xx
-	branch = beta
+	branch = pulsar-8
 [submodule "meta-gateway"]
 	path = layers/meta-gateway
 	url = ../meta-gateway
