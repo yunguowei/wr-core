@@ -2,8 +2,6 @@
 my_local_post_func()
 {
     # cube-gw configuration
-    echo "lxc.console = /dev/ttyS0" >> ${TMPMNT}/var/lib/lxc/cube-gw/config
-    ln -sf /dev/null ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/getty.target.wants/serial-getty@ttyS0.service
     rm -f ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/multi-user.target.wants/named.service
     ln -sf /dev/null ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/named.service
     rm -f ${TMPMNT}/var/lib/lxc/cube-gw/rootfs/etc/systemd/system/systemd-resolved.service
