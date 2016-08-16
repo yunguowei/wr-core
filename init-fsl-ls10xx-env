@@ -142,6 +142,7 @@ PREFERRED_VERSION_linux-yocto = "4.1%"
 
 DL_DIR = "\${TOPDIR}/../downloads"
 SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
+PULSAR_UNATTENDED_UPGRADE = "true"
 
 PNWHITELIST_LAYERS_forcevariable = ""
 
