@@ -101,9 +101,9 @@ COMPATIBLE_MACHINE_intel-corei7-64 = "${MACHINE}"
 # Set default machine to select in the hob interface
 HOB_MACHINE = "intel-corei7-64"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
-LINUX_KERNEL_TYPE = "standard"
-PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto"
-KTYPE_ENABLED = "standard"
+LINUX_KERNEL_TYPE = "preempt-rt"
+PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto-rt"
+KTYPE_ENABLED = "preempt-rt"
 PACKAGE_CLASSES = "package_rpm"
 # Activate systemd
 VIRTUAL-RUNTIME_init_manager = " systemd "
