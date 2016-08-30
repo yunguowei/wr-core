@@ -59,15 +59,16 @@ if [ $? = 0 ] ; then
    if [ ! -e .configured ] ; then
       perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
 
+# Old layers
+#	       wr-base \
+#	       wr-fixes \
+#	       wr-tools-debug \
+#	       wr-kernel \
+
       	   for e in wrlabs-integration \
-	       wr-kernel \
 	       meta-intel \
-	       meta-intel/meta-isg/meta-valleyisland \
-	       wr-base \
-	       wr-fixes \
-	       wr-tools-debug \
-	       wr-hac-agent \
 	       pulsar \
+	       wr-hac-agent \
 	       meta-overc/meta-cube \
 	       meta-cloud-services \
                meta-browser \
@@ -89,7 +90,7 @@ if [ $? = 0 ] ; then
     		   perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
 	       fi
       done
-      perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
+#      perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
 
       cat<<EOF>>conf/local.conf
 DISTRO = "wrlinux-small"
@@ -123,8 +124,8 @@ DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
 EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
 
 ## Included feature templates
-require `pwd`/../layers/wr-kernel/templates/default/template.conf
-require `pwd`/../layers/wr-base/templates/default/template.conf
+#require `pwd`/../layers/wr-kernel/templates/default/template.conf
+#require `pwd`/../layers/wr-base/templates/default/template.conf
 require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
 
 # Kernel overrides
@@ -139,8 +140,8 @@ SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.gi
 # EXTRA_BBMASK may be appended in a layer or template
 BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
 
-PREFERRED_VERSION_linux-yocto = "4.1%"
-PREFERRED_VERSION_linux-yocto-rt = "4.1%"
+PREFERRED_VERSION_linux-yocto = "4.4%"
+PREFERRED_VERSION_linux-yocto-rt = "4.4%"
 
 DL_DIR = "\${TOPDIR}/../downloads"
 SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
