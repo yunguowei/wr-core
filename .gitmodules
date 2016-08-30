@@ -22,6 +22,10 @@
 #	path = layers/wr-fixes
 #	url = ../wr-fixes
 #	branch = LB13_8.0_RCPL0001
+#[submodule "wr-tools-debug"]
+#	path = layers/wr-tools-debug
+#	url = ../wr-tools-debug
+#	branch = LB13_8.0_RCPL0001
 [submodule "meta-intel"]
 	path = layers/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
@@ -61,10 +65,6 @@
 [submodule "qemuarm"]
 	path = layers/qemuarm
 	url = ../qemuarm
-	branch = LB13_8.0_RCPL0001
-[submodule "wr-tools-debug"]
-	path = layers/wr-tools-debug
-	url = ../wr-tools-debug
 	branch = LB13_8.0_RCPL0001
 [submodule "fsl-ls10xx"]
 	path = layers/fsl-ls10xx
