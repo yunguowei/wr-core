@@ -54,6 +54,11 @@ sudo ../overc-installer/sbin/cubeit --force \
    --config `pwd`/../install_templates/ZedBoard/MicroZed-7010-live.sh --target-config MicroZed-7010-live.sh \
    --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar8-avnet-microzed-7010.img
 
+# Build a bootable image for MicroZed 7010 Industrial IoT Starter board
+sudo ../overc-installer/sbin/cubeit --force \
+    --config `pwd`/../install_templates/ZedBoard/MicroZed-7010-IIOT-live.sh --target-config MicroZed-7010-IIOT-live.sh \
+    --artifacts `pwd`/tmp/deploy/images/xilinx-zynq pulsar8-avnet-microzed-7010-iiot-starter.img
+
 # Build a bootable image for MicroZed 7020  board
 sudo ../overc-installer/sbin/cubeit --force \
    --config `pwd`/../install_templates/ZedBoard/MicroZed-7020-live.sh --target-config MicroZed-7020-live.sh \
