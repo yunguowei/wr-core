@@ -140,14 +140,16 @@ SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.gi
 # EXTRA_BBMASK may be appended in a layer or template
 BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
 
-PREFERRED_VERSION_linux-yocto = "4.4%"
-PREFERRED_VERSION_linux-yocto-rt = "4.4%"
+PREFERRED_VERSION_linux-yocto = "4.8%"
+PREFERRED_VERSION_linux-yocto-rt = "4.8%"
 
 DL_DIR = "\${TOPDIR}/../downloads"
 SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
 PULSAR_UNATTENDED_UPGRADE = "true"
 
 PNWHITELIST_LAYERS_forcevariable = ""
+
+PRSERV_HOST = "localhost:0"
 
 PREMIRRORS_append := "\\
     http://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
