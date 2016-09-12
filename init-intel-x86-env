@@ -84,6 +84,7 @@ if [ $? = 0 ] ; then
 	       meta-openembedded/meta-xfce \
 	       external-binaries \
 	       meta-virtualization \
+	       meta-dpdk \
 	       oe-meta-go ; do
 	       if [ -e $OEROOT/../$e ] ; then
     		   perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
