@@ -152,9 +152,9 @@ PNWHITELIST_LAYERS_forcevariable = ""
 PRSERV_HOST = "localhost:0"
 
 PREMIRRORS_append := "\\
-    http://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
-    https://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
-    hg://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
+    http://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
+    https://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
+    hg://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
 "
 
 EOF

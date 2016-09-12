@@ -94,10 +94,6 @@
 	path = layers/external-binaries
 	url = ../external-binaries
 	branch = master
-[submodule "premirrors8"]
-	path = premirrors8
-	url = ../premirrors8
-	branch = master
 [submodule "wr-hac-agent"]
 	path = layers/wr-hac-agent
 	url = ../wr-hac-agent
