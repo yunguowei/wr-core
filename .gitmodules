@@ -102,3 +102,7 @@
 	path = layers/wr-hac-agent
 	url = ../wr-hac-agent
 	branch = master
+[submodule "meta-dpdk"]
+	path = layers/meta-dpdk
+	url = ../meta-dpdk
+	branch = pulsar-8
