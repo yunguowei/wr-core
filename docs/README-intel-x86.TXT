@@ -1,5 +1,5 @@
 Quick start instructions to build Wind River Pulsar Linux
-for the Intel Minnow Board Max and Intel Compute Stick
+for the Intel NUC and Intel Compute Stick
 (Cherry Trail and Bay Trail)
 
 For a more guides, examples and information please see:
@@ -17,10 +17,14 @@ cd wr-core
 #########################################################################
 
 . init-intel-x86-env
-bitbake cube-desktop cube-dom0 cube-essential
+bitbake cube-desktop cube-dom0 cube-essential cube-server
 
 # Build a self-bootable image for IntelCubeDesktop board
 sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/IntelCubeDesktop/IntelCubeDesktop-live.sh --target-config IntelCubeDesktop-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-intelcubedesktop.img
+
+# Build a self-bootable image for Intel NUC board
+sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/Intel_NUC/IntelNUCServer-live.sh --target-config IntelNUCServer-live.sh  --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-intelnucserver.img
+
 # Then dd it to an usb stick or sd card and boot up Pulsar directly on target
 
 # Or build an installer image or USB stick
