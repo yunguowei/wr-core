@@ -61,7 +61,7 @@
 [submodule "qemuarma9"]
 	path = layers/qemuarma9
 	url = ../qemuarma9
-	branch = LB13_8.0_RCPL0001
+	branch = master
 [submodule "qemuarm"]
 	path = layers/qemuarm
 	url = ../qemuarm
