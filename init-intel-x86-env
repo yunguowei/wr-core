@@ -129,6 +129,7 @@ require `pwd`/../layers/wr-kernel/templates/default/template.conf
 require `pwd`/../layers/wr-base/templates/default/template.conf
 require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
 require `pwd`/../layers/wrlabs-integration/secure-environment/templates/feature/uefi-secure-boot/template.conf
+require `pwd`/../layers/wrlabs-integration/secure-environment/templates/feature/mok-secure-boot/template.conf
 
 # Kernel overrides
 INHERIT += "blacklist"
