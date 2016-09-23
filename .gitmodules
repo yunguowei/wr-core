@@ -106,3 +106,7 @@
 	path = layers/meta-dpdk
 	url = ../meta-dpdk
 	branch = pulsar-8
+[submodule "layers/meta-secure-env"]
+	path = layers/meta-secure-env
+	url = ../meta-secure-env
+	branch = master
