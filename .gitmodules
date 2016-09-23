@@ -44,7 +44,7 @@
 	branch = pulsar-8
 [submodule "meta-openembedded"]
 	path = layers/meta-openembedded
-	url = git://git.openembedded.org/meta-openembedded
+	url = ../meta-openembedded
 	branch = jethro
 [submodule "meta-virtualization"]
 	path = layers/meta-virtualization
