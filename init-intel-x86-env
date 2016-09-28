@@ -61,6 +61,7 @@ if [ $? = 0 ] ; then
 
       	   for e in wrlabs-integration \
 	       meta-secure-env \
+	       meta-measured \
 	       wr-kernel \
 	       meta-intel \
 	       meta-intel/meta-isg/meta-valleyisland \

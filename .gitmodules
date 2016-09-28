@@ -110,3 +110,7 @@
 	path = layers/meta-secure-env
 	url = ../meta-secure-env
 	branch = master
+[submodule "layers/meta-measured"]
+	path = layers/meta-measured
+	url = ../meta-measured
+	branch = pulsar-8
