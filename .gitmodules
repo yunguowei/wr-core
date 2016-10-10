@@ -25,7 +25,7 @@
 [submodule "meta-intel"]
 	path = layers/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
-	branch = dizzy
+	branch = jethro
 [submodule "wrlabs-integration"]
 	path = layers/wrlabs-integration
 	url = ../wrlabs-integration
