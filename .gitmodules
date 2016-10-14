@@ -114,3 +114,7 @@
 	path = layers/meta-measured
 	url = ../meta-measured
 	branch = pulsar-8
+[submodule "intel-apollolake"]
+	path = layers/intel-apollolake
+	url = ../intel-apollolake
+	branch = pulsar-8
