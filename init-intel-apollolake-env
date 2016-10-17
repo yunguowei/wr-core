@@ -65,6 +65,7 @@ if [ $? = 0 ] ; then
 	       wr-kernel \
 	       meta-intel \
 	       intel-apollolake \
+	       meta-gateway \
 	       wr-base \
 	       wr-fixes \
 	       wr-tools-debug \
@@ -135,6 +136,7 @@ require `pwd`/../layers/meta-secure-env/templates/feature/mok-secure-boot/templa
 require `pwd`/../layers/meta-secure-env/templates/feature/tpm/template.conf
 require `pwd`/../layers/meta-secure-env/templates/feature/tpm2/template.conf
 require `pwd`/../layers/intel-apollolake/templates/default/template.conf
+require `pwd`/../layers/meta-gateway/templates/default/template.conf
 
 # Kernel overrides
 INHERIT += "blacklist"
