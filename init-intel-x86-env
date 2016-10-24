@@ -60,8 +60,6 @@ if [ $? = 0 ] ; then
       perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
 
       	   for e in wrlabs-integration \
-	       meta-secure-env \
-	       meta-measured \
 	       wr-kernel \
 	       meta-intel \
 	       meta-intel/meta-isg/meta-valleyisland \
@@ -129,11 +127,6 @@ EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'g
 require `pwd`/../layers/wr-kernel/templates/default/template.conf
 require `pwd`/../layers/wr-base/templates/default/template.conf
 require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
-require `pwd`/../layers/meta-secure-env/templates/default/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/uefi-secure-boot/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/mok-secure-boot/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/tpm/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/tpm2/template.conf
 
 # Kernel overrides
 INHERIT += "blacklist"
