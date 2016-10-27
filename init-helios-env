@@ -1,0 +1,185 @@
+#!/bin/sh
+
+# Copyright (C) 2006-2011 Linux Foundation
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+if [ -n "$BASH_SOURCE" ]; then
+   OEROOT="`dirname $BASH_SOURCE`/layers/oe-core"
+elif [ -n "$ZSH_NAME" ]; then
+   OEROOT="`dirname $0`/layers/oe-core"
+else
+   OEROOT="`pwd`/layers/oe-core"
+fi
+
+if [ -n "$BBSERVER" ]; then
+   unset BBSERVER
+fi
+
+if [ -n "$BBSERVER" ]; then
+   unset BBSERVER
+fi
+
+# Figure out the "TOP" relative to TOP/layers/oe-core
+THIS_SCRIPT=`dirname $OEROOT`
+THIS_SCRIPT=$THIS_SCRIPT/init-intel-apollolake-env
+
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-intel-x86-env ]; then
+   echo "Error: This script needs to be sourced. Please run as '. $THIS_SCRIPT'"
+   exit 1
+fi
+
+OEROOT=`readlink -f "$OEROOT"`
+export OEROOT
+
+TEMPLATECONF=$OEROOT/../../.template-conf
+export TEMPLATECONF
+
+S_ARGS="$@"
+if [ "$S_ARGS" = "" ] ; then
+   S_ARGS=build-helios
+fi
+
+. $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
+     $OEROOT/scripts/oe-setup-builddir && \
+     [ -n "$BUILDDIR" ] && cd $BUILDDIR
+if [ $? = 0 ] ; then
+   if [ ! -e .configured ] ; then
+      perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
+
+      	   for e in wrlabs-integration \
+	       meta-secure-env \
+	       meta-measured \
+	       wr-kernel \
+	       meta-intel \
+	       intel-apollolake \
+	       intel-apollolake/helios-extra/watchdog-nowayout \
+	       meta-gateway \
+	       wr-base \
+	       wr-fixes \
+	       wr-tools-debug \
+	       wr-hac-agent \
+	       pulsar \
+	       meta-overc/meta-cube \
+	       meta-cloud-services \
+               meta-browser \
+	       meta-security \
+               meta-openembedded/meta-initramfs \
+               meta-openembedded/meta-filesystems \
+	       meta-openembedded/meta-networking \
+	       meta-openembedded/meta-multimedia \
+	       meta-openembedded/meta-gnome \
+	       meta-openembedded/meta-oe \
+	       meta-openembedded/meta-python \
+	       meta-openembedded/meta-perl \
+	       meta-openembedded/meta-webserver \
+	       meta-openembedded/meta-xfce \
+	       external-binaries \
+	       meta-virtualization \
+	       meta-dpdk \
+	       oe-meta-go ; do
+	       if [ -e $OEROOT/../$e ] ; then
+    		   perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
+	       fi
+      done
+      perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
+
+      cat<<EOF>>conf/local.conf
+DISTRO = "wrlinux-small"
+WRLINUX_RCPLVERSION = ".6"
+MACHINE = "intel-corei7-64"
+# Set wide compatibility with core2 processors
+DEFAULTTUNE = "core2-64"
+COMPATIBLE_MACHINE_intel-corei7-64 = "${MACHINE}"
+# Set default machine to select in the hob interface
+HOB_MACHINE = "intel-corei7-64"
+DEFAULT_IMAGE = "wrlinux-image-glibc-small"
+LINUX_KERNEL_TYPE = "standard"
+PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto"
+KTYPE_ENABLED = "standard"
+PACKAGE_CLASSES = "package_rpm"
+# Activate systemd
+VIRTUAL-RUNTIME_init_manager = " systemd "
+VIRTUAL-RUNTIME_syslog = "sysklogd"
+DISTRO_FEATURES_append = " systemd x11 opengl"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
+KERNEL_FEATURES_append = " cfg/systemd.scc leafhill"
+USER_CLASSES = "buildstats buildstats-summary"
+IMAGE_FSTYPES += "tar.bz2"
+NOISO = "1"
+IMAGE_FSTYPES += "ext3"
+IMAGE_FSTYPES += "live"
+
+MULTILIBS = "multilib:lib32"
+DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
+
+EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
+
+## Included feature templates
+require `pwd`/../layers/wr-kernel/templates/default/template.conf
+require `pwd`/../layers/wr-base/templates/default/template.conf
+require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
+require `pwd`/../layers/meta-secure-env/templates/default/template.conf
+require `pwd`/../layers/meta-secure-env/templates/feature/uefi-secure-boot/template.conf
+require `pwd`/../layers/meta-secure-env/templates/feature/mok-secure-boot/template.conf
+require `pwd`/../layers/meta-secure-env/templates/feature/tpm/template.conf
+require `pwd`/../layers/meta-secure-env/templates/feature/tpm2/template.conf
+require `pwd`/../layers/intel-apollolake/templates/default/template.conf
+require `pwd`/../layers/meta-gateway/templates/default/template.conf
+
+CUBE_ESSENTIAL_EXTRA_INSTALL += "\
+    packagegroup-uefi-secure-boot \
+    packagegroup-mok-secure-boot \
+    packagegroup-tpm2 \
+"
+
+# Kernel overrides
+INHERIT += "blacklist"
+PNBLACKLIST[linux-windriver] = "Recipe not buildable without local kernel git"
+PNBLACKLIST[linux-windriver-dummy] = "Recipe not buildable without local kernel git"
+# Unblacklist the YP kernel
+PNBLACKLIST[linux-yocto] = ""
+PNBLACKLIST[linux-yocto-rt] = ""
+PNBLACKLIST[linux-yocto-tiny] = ""
+SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
+# EXTRA_BBMASK may be appended in a layer or template
+BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
+
+PREFERRED_VERSION_linux-yocto = "4.1%"
+PREFERRED_VERSION_linux-yocto-rt = "4.1%"
+
+DL_DIR = "\${TOPDIR}/../downloads"
+SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
+PULSAR_UNATTENDED_UPGRADE = "true"
+
+PNWHITELIST_LAYERS_forcevariable = ""
+
+INHERIT += "packagefeed-stability"
+
+PREMIRRORS_append := "\\
+    http://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
+    https://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
+    hg://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
+"
+
+EOF
+      touch .configured
+   fi
+fi
+unset OEROOT
+unset BBPATH
+unset THIS_SCRIPT
+unset S_ARGS
+unset TEMPLATECONF
