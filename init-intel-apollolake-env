@@ -138,13 +138,11 @@ require `pwd`/../layers/meta-secure-env/templates/feature/tpm2/template.conf
 require `pwd`/../layers/intel-apollolake/templates/default/template.conf
 require `pwd`/../layers/meta-gateway/templates/default/template.conf
 
-EXTRA_SECURE_ENV_PKGS = "\
+CUBE_ESSENTIAL_EXTRA_INSTALL += "\
     packagegroup-uefi-secure-boot \
     packagegroup-mok-secure-boot \
     packagegroup-tpm2 \
 "
-
-CUBE_ESSENTIAL_EXTRA_INSTALL += " ${EXTRA_SECURE_ENV_PKGS}"
 
 # Kernel overrides
 INHERIT += "blacklist"
