@@ -16,7 +16,7 @@ cd wr-core
 ./scripts/host_package_install.sh --install --yes
 #########################################################################
 
-. init-intel-x86-env
+. init-intel-apollolake-env
 bitbake cube-desktop cube-dom0 cube-essential cube-gw
 
 # Build a self-bootable image with Desktop GUI for Apollolake board
