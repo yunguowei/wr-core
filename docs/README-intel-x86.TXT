@@ -29,7 +29,7 @@ sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/
 
 # Or build an installer image or USB stick
 #DEV=/dev/NBD_DEVICE  or a USB storage device
-sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/IntelCubeDesktop/IntelCubeDesktop-live.sh --target-config IntelCubeDesktop-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 $DEV
+sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/IntelCubeDesktop/IntelCubeDesktop-live.sh --target-config `pwd`/../install_templates/IntelCubeDesktop/IntelCubeDesktop-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 $DEV
 # Then plug the USB installer stick into target, boot it up and run the
 # installation(Here suppose the storage device you want to install to is $DEV):
 cd /opt/installer
