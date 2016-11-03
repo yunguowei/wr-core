@@ -144,6 +144,11 @@ CUBE_ESSENTIAL_EXTRA_INSTALL += "\
     packagegroup-mok-secure-boot \
     packagegroup-tpm2 \
 "
+CUBE_GW_EXTRAS += " \
+    packagegroup-docker \
+    protobuf \
+"
+
 
 # Kernel overrides
 INHERIT += "blacklist"
