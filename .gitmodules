@@ -98,3 +98,6 @@
 	path = layers/wr-hac-agent
 	url = ../wr-hac-agent
 	branch = master
+#[submodule "layers/meta-raspberrypi"]
+#	path = layers/meta-raspberrypi
+#	url = https://git.yoctoproject.org/git/meta-raspberrypi
