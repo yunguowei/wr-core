@@ -87,10 +87,25 @@ else
 	echo "[ERROR]: essential rootfs is not available"
 	umount /z
         losetup -d ${device}
+	exit 1
+fi
+
+if ! [ -d factory_tmp ]; then
+	mkdir factory_tmp
+fi
+
+mount -o subvolid=5 ${device}p3 factory_tmp
+if [ -d factory_tmp/.factory/var/lib/lxc ]; then
+	mount -o subvolid=5 ${device}p4 factory_tmp/.factory/var/lib/lxc
 fi
 
 echo "[INFO] deploy $CONFIG_FILE to essential"
 cp -f $CONFIG_FILE var/lib/smart/config
+
+if [ -d factory_tmp/.factory/var/lib/smart ]; then
+	echo "[INFO] deploy $CONFIG_FILE to factory-reset backed essential"
+	cp -f $CONFIG_FILE factory_tmp/.factory/var/lib/smart/config
+fi
 
 CN=`ls var/lib/lxc`
 
@@ -98,10 +113,18 @@ for cn in $CN; do
 	if [ -d var/lib/lxc/$cn/rootfs/var/lib/smart ]; then
 		echo "[INFO] deploy $CONFIG_FILE to $cn"
 		cp -f $CONFIG_FILE var/lib/lxc/$cn/rootfs/var/lib/smart/config
+
+		if [ -d factory_tmp/.factory/var/lib/lxc/.factory/$cn/rootfs/var/lib/smart ]; then 
+			echo "[INFO] deploy $CONFIG_FILE to factory-reset backed $cn"
+			cp -f $CONFIG_FILE factory_tmp/.factory/var/lib/lxc/.factory/$cn/rootfs/var/lib/smart/config
+		fi
 	fi
 done
 
 echo "[INFO] clean up the system"
+umount factory_tmp/.factory/var/lib/lxc
+umount factory_tmp
+rm -rf factory_tmp
 umount var/lib/lxc
 cd - >/dev/null 2>&1
 umount /z
