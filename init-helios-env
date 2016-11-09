@@ -136,6 +136,7 @@ require `pwd`/../layers/meta-secure-env/templates/feature/uefi-secure-boot/templ
 require `pwd`/../layers/meta-secure-env/templates/feature/mok-secure-boot/template.conf
 require `pwd`/../layers/meta-secure-env/templates/feature/tpm/template.conf
 require `pwd`/../layers/meta-secure-env/templates/feature/tpm2/template.conf
+require `pwd`/../layers/meta-secure-env/templates/feature/storage-encryption/template.conf
 require `pwd`/../layers/intel-apollolake/templates/default/template.conf
 require `pwd`/../layers/meta-gateway/templates/default/template.conf
 
@@ -143,6 +144,7 @@ CUBE_ESSENTIAL_EXTRA_INSTALL += "\
     packagegroup-uefi-secure-boot \
     packagegroup-mok-secure-boot \
     packagegroup-tpm2 \
+    packagegroup-storage-encryption \
 "
 CUBE_GW_EXTRAS += " \
     packagegroup-docker \
