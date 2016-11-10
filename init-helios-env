@@ -127,6 +127,9 @@ DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
 
 EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
 
+SERIAL_CONSOLES_intel-corei7-64 = "\${@bb.utils.contains('KERNEL_FEATURES', 'leafhill', '115200;ttyS2', '115200;ttyS0', d)}"
+SERIAL_CONSOLES_CHECK_intel-corei7-64 = "\${@bb.utils.contains('KERNEL_FEATURES', 'leafhill', 'ttyS2', 'ttyS0', d)}"
+
 ## Included feature templates
 require `pwd`/../layers/wr-kernel/templates/default/template.conf
 require `pwd`/../layers/wr-base/templates/default/template.conf
