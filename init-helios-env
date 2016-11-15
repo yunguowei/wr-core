@@ -116,7 +116,7 @@ VIRTUAL-RUNTIME_syslog = "sysklogd"
 DISTRO_FEATURES_append = " systemd x11 opengl"
 DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
 KERNEL_FEATURES_append = " cfg/systemd.scc"
-BSP_SUBTYPE = "leafhill"
+BSP_SUBTYPE = "apollolake"
 USER_CLASSES = "buildstats buildstats-summary"
 IMAGE_FSTYPES += "tar.bz2"
 NOISO = "1"
@@ -128,8 +128,8 @@ DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
 
 EXTRA_IMAGEDEPENDS += "\${@base_contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
 
-SERIAL_CONSOLES_intel-corei7-64 = "\${@bb.utils.contains('BSP_SUBTYPE', 'leafhill', '115200;ttyS2', '115200;ttyS0', d)}"
-SERIAL_CONSOLES_CHECK_intel-corei7-64 = "\${@bb.utils.contains('BSP_SUBTYPE', 'leafhill', 'ttyS2', 'ttyS0', d)}"
+SERIAL_CONSOLES_intel-corei7-64 = "\${@bb.utils.contains('BSP_SUBTYPE', 'apollolake', '115200;ttyS2', '115200;ttyS0', d)}"
+SERIAL_CONSOLES_CHECK_intel-corei7-64 = "\${@bb.utils.contains('BSP_SUBTYPE', 'apollolake', 'ttyS2', 'ttyS0', d)}"
 
 ## Included feature templates
 require `pwd`/../layers/wr-kernel/templates/default/template.conf
