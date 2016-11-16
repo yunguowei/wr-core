@@ -155,6 +155,12 @@ CUBE_ESSENTIAL_EXTRA_INSTALL += "\
 CUBE_GW_EXTRAS += " \
     packagegroup-docker \
     protobuf \
+    inetutils-telnet \
+    inetutils-ftp \
+    ncftp \
+    uci \
+    gptfdisk \
+    ddrescue \
 "
 
 
