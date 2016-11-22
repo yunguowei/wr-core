@@ -118,3 +118,7 @@
 	path = layers/intel-apollolake
 	url = ../intel-apollolake
 	branch = pulsar-8
+[submodule "meta-java"]
+	path = layers/meta-java
+	url = ../meta-java
+	branch = wr-8.0-20151119
