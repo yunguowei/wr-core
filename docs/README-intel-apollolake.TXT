@@ -44,3 +44,64 @@ cd /opt/installer
 
 ### login: root  password: root
 
+### Supported Features 
+-------------------------------------------------------------------------------
+
+The following BSP features are validated and supported on boards where
+the corresponding h/w features exist.
+
+  o General Platform
+	+ perf: H/W based PMU
+
+  o Bus
+	+ PCI/PCI-Express
+	+ I2C/SMBus:
+		+ Intel i801 family I2C/SMBus controller
+
+  o Network
+        + Intel IGB Ethernet:
+                + Intel Corporation I210 Gigabit Network Connection
+
+  o USB
+	+ USB Host:
+		+ USB 3.0 XHCI controller
+
+  o Storage
+	+ SATA: AHCI SATA controller
+	+ eMMC/SDIO/SD card: Secure Digital Host Controller
+
+  o Multimedia
+	+ Graphics:
+		+ Intel Corporation I915 Integrated Graphics Controller
+
+	+ Intel HD Audio
+
+  o Power Management
+	+ CPU Freq: ACPI P-state
+	+ CPU Idle: ACPI C-state
+
+  o Misc Devices
+	+ UART: 8250/16550A compatible serial port
+	+ RTC: PC-style CMOS RTC
+	+ Input deivce
+		+ USB mouse & keyboard
+	+ Watchdog: Intel iTCO H/W Watchdog timer
+	+ HW Monitor: Intel CPU core temperature sensor
+
+  o Graphics Acceleration:
+	WRLinux has integrated the following packages to support 2D/3D graphics acceleration
+
+        xserver-xorg-1.17.2
+        libdrm-2.4.67
+        mesa-11.2.1
+        xf86-video-intel-2.99.917
+
+### Unsupported Features
+---------------------------------------------------------
+
+The following features are not supported or validated:
+
+	x IPU
+	x Media Engine
+	x USB OTG
+	x SPI
