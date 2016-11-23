@@ -63,6 +63,7 @@ if [ $? = 0 ] ; then
 	       wr-kernel \
 	       meta-intel \
 	       meta-intel/meta-isg/meta-valleyisland \
+	       meta-secure-env \
 	       meta-measured \
 	       wr-base \
 	       wr-fixes \
@@ -133,6 +134,13 @@ require `pwd`/../layers/wr-kernel/templates/default/template.conf
 require `pwd`/../layers/wr-base/templates/default/template.conf
 require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
 require `pwd`/../layers/meta-gateway/templates/default/template.conf
+require `pwd`/../layers/meta-secure-env/templates/feature/tpm/template.conf
+require `pwd`/../layers/meta-secure-env/templates/feature/tpm2/template.conf
+
+CUBE_ESSENTIAL_EXTRA_INSTALL += "\
+    packagegroup-tpm2 \
+"
+
 
 # Kernel overrides
 INHERIT += "blacklist"
