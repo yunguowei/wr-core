@@ -19,7 +19,7 @@ cd wr-core
 bitbake cube-dom0 cube-essential cube-gw
 
 # Build a self-bootable image with gateway support for Dell Caracalla board
-sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/DellCaracalla/DellCaracalla-live-gw.sh  --target-config DellCaracalla-live-gw.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-dellcaracalla-gw.im
+sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/DellCaracalla/DellCaracalla-live-gw.sh  --target-config DellCaracalla-live-gw.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-dellcaracalla-gw.img
 
 # Then dd it to an usb stick or sd card and boot up Pulsar directly on target
 
