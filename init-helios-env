@@ -166,6 +166,8 @@ CUBE_GW_EXTRAS += " \
     uci \
     gptfdisk \
     ddrescue \
+    gpsd \
+    chrony \
 "
 
 
