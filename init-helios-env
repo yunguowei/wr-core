@@ -65,7 +65,7 @@ if [ $? = 0 ] ; then
 	       wr-kernel \
 	       meta-intel \
 	       intel-apollolake \
-	       intel-apollolake/helios-extra/watchdog-nowayout \
+	       intel-apollolake/helios-extra \
 	       meta-gateway \
 	       wr-base \
 	       wr-fixes \
