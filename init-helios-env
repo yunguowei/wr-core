@@ -144,7 +144,12 @@ require `pwd`/../layers/meta-secure-env/templates/feature/storage-encryption/tem
 require `pwd`/../layers/intel-apollolake/templates/default/template.conf
 require `pwd`/../layers/meta-gateway/templates/default/template.conf
 
-ROOTFS_BOOTSTRAP_INSTALL_append = " packagegroup-storage-encryption-initramfs"
+ROOTFS_BOOTSTRAP_INSTALL_append = " \
+    packagegroup-storage-encryption-initramfs \
+    linux-firmware-pcie8897 \
+    linux-firmware \
+    linux-firmware-bxt-dmc-ver1 \
+"
 
 CUBE_ESSENTIAL_EXTRA_INSTALL += "\
     packagegroup-uefi-secure-boot \
