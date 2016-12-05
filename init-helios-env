@@ -170,6 +170,8 @@ CUBE_GW_EXTRAS += " \
     chrony \
 "
 
+# Conflict wiht chrony
+IMAGE_INSTALL_remove = "ntp"
 
 # Kernel overrides
 INHERIT += "blacklist"
