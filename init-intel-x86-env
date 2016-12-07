@@ -162,6 +162,8 @@ PREMIRRORS_append := "\\
     hg://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
 "
 
+OVERC_ESSENTIAL_MODE = "read-write"
+
 EOF
       touch .configured
    fi
