@@ -100,5 +100,5 @@
 	branch = master
 [submodule "meta-raspberrypi"]
 	path = layers/meta-raspberrypi
-	url = https://git.yoctoproject.org/git/meta-raspberrypi
+	url = git://git.yoctoproject.org/meta-raspberrypi
 	branch = master
