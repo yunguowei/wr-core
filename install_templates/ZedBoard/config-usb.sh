@@ -29,7 +29,7 @@ HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-xilinx-zynq.tar.bz2:console:mer
 "
 INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-xilinx-zynq.tar.bz2"
 
-NETWORK_DEVICE_CLASSES="eth* wl* en*"
+NETWORK_DEVICE_CLASSES="eth+ wl+ en+"
 NETWORK_DEVICE="eth0"
 
 # Uncomment to specify path to init.pp
