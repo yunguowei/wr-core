@@ -24,8 +24,8 @@
 	branch = LB13_8.0_RCPL0001
 [submodule "meta-intel"]
 	path = layers/meta-intel
-	url = git://git.yoctoproject.org/meta-intel
-	branch = jethro
+	url = ../meta-intel
+	branch = pulsar-8
 [submodule "wrlabs-integration"]
 	path = layers/wrlabs-integration
 	url = ../wrlabs-integration
@@ -48,8 +48,8 @@
 	branch = pulsar-8
 [submodule "meta-virtualization"]
 	path = layers/meta-virtualization
-	url = git://git.yoctoproject.org/meta-virtualization
-	branch = master
+	url = ../meta-virtualization
+	branch = pulsar-8
 [submodule "oe-meta-go"]
 	path = layers/oe-meta-go
 	url = ../oe-meta-go
@@ -80,16 +80,16 @@
 	branch = master
 [submodule "meta-cloud-services"]
 	path = layers/meta-cloud-services
-	url = git://git.yoctoproject.org/meta-cloud-services
-	branch = master
+	url = ../meta-cloud-services
+	branch = pulsar-8
 [submodule "meta-browser"]
 	path = layers/meta-browser
-	url = git://github.com/OSSystems/meta-browser.git
-	branch = master
+	url = ../meta-browser
+	branch = pulsar-8
 [submodule "meta-security"]
         path = layers/meta-security
-        url = git://git.yoctoproject.org/meta-security
-        branch = master
+        url = ../meta-security
+        branch = pulsar-8
 [submodule "external-binaries"]
 	path = layers/external-binaries
 	url = ../external-binaries
