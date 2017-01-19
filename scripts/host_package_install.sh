@@ -16,10 +16,10 @@ RH6_x86_64='glibc.i686 glibc-devel.i686 glibc-devel.x86_64 libgcc.i686 ncurses-l
 RH7_x86_64='glibc.i686 glibc-devel.i686 glibc-devel.x86_64 libgcc.i686 ncurses-libs.i686 perl-Text-ParseWords perl-podlators perl-autodie perl-Thread-Queue hostname texi2html diffstat subversion mesa-libGL mesa-libGLU SDL-devel texinfo gawk gcc gcc-c++ help2man chrpath git pygtk2 bzip2 wget tar patch xz make diffutils file screen qemu-img btrfs-progs kpartx expect dosfstools parted e2fsprogs'
 
 #Fedora 19+ i386
-F19_i686='perl-Text-ParseWords perl-podlators perl-autodie perl-Thread-Queue hostname texi2html diffstat subversion mesa-libGL mesa-libGLU SDL-devel texinfo gawk gcc gcc-c++ help2man chrpath git pygtk2 bzip2 wget tar patch xz make diffutils file screen qemu-img btrfs-progs kpartx expect dosfstools parted e2fsprogs'
+F19_i686='perl-Text-ParseWords perl-podlators perl-autodie perl-Thread-Queue hostname texi2html diffstat subversion mesa-libGL mesa-libGLU SDL-devel texinfo gawk gcc gcc-c++ help2man chrpath git pygtk2 bzip2 wget tar patch xz make diffutils file screen qemu-img btrfs-progs kpartx expect dosfstools parted e2fsprogs perl-bignum'
 
 #Fedora 19+ x86_64
-F19_x86_64='glibc.i686 glibc-devel.i686 glibc-devel.x86_64 libgcc.i686 ncurses-libs.i686 perl-Text-ParseWords perl-podlators perl-autodie perl-Thread-Queue hostname texi2html diffstat subversion mesa-libGL mesa-libGLU SDL-devel texinfo gawk gcc gcc-c++ help2man chrpath git pygtk2 bzip2 wget tar patch xz make diffutils file screen qemu-img btrfs-progs kpartx expect dosfstools parted e2fsprogs'
+F19_x86_64='glibc.i686 glibc-devel.i686 glibc-devel.x86_64 libgcc.i686 ncurses-libs.i686 perl-Text-ParseWords perl-podlators perl-autodie perl-Thread-Queue hostname texi2html diffstat subversion mesa-libGL mesa-libGLU SDL-devel texinfo gawk gcc gcc-c++ help2man chrpath git pygtk2 bzip2 wget tar patch xz make diffutils file screen qemu-img btrfs-progs kpartx expect dosfstools parted e2fsprogs perl-bignum'
 
 #Ubuntu 10.04 i386
 U1004_i686='texi2html chrpath diffstat subversion libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev libncurses5-dev texinfo gawk gcc gcc-multilib help2man g++ git-core python-gtk2 bash diffutils xz-utils make file screen qemu-utils btrfs-tools kpartx expect dosfstools parted e2fsprogs'
