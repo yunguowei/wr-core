@@ -122,3 +122,7 @@
 	path = layers/meta-java
 	url = ../meta-java
 	branch = wr-8.0-20151119
+[submodule "meta-ima"]
+	path = layers/meta-ima
+	url = ../meta-ima
+	branch = pulsar-8
