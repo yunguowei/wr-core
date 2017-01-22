@@ -170,8 +170,6 @@ PULSAR_UNATTENDED_UPGRADE = "true"
 
 PNWHITELIST_LAYERS_forcevariable = ""
 
-INHERIT += "packagefeed-stability"
-
 PREMIRRORS_append := "\\
     http://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
     https://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
