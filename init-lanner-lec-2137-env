@@ -131,16 +131,16 @@ SERIAL_CONSOLES_intel-corei7-64 = "\${@bb.utils.contains('BSP_SUBTYPE', 'apollol
 SERIAL_CONSOLES_CHECK_intel-corei7-64 = "\${@bb.utils.contains('BSP_SUBTYPE', 'apollolake', 'ttyS0', 'ttyS1', d)}"
 
 ## Included feature templates
-require `pwd`/../layers/wr-kernel/templates/default/template.conf
-require `pwd`/../layers/wr-base/templates/default/template.conf
-require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
-require `pwd`/../layers/meta-secure-env/templates/default/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/uefi-secure-boot/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/mok-secure-boot/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/tpm/template.conf
-require `pwd`/../layers/meta-secure-env/templates/feature/tpm2/template.conf
-require `pwd`/../layers/intel-apollolake/templates/default/template.conf
-require `pwd`/../layers/meta-gateway/templates/default/template.conf
+require $OEROOT/../wr-kernel/templates/default/template.conf
+require $OEROOT/../wr-base/templates/default/template.conf
+require $OEROOT/../wrlabs-integration/templates/default/template.conf
+require $OEROOT/../meta-secure-env/templates/default/template.conf
+require $OEROOT/../meta-secure-env/templates/feature/uefi-secure-boot/template.conf
+require $OEROOT/../meta-secure-env/templates/feature/mok-secure-boot/template.conf
+require $OEROOT/../meta-secure-env/templates/feature/tpm/template.conf
+require $OEROOT/../meta-secure-env/templates/feature/tpm2/template.conf
+require $OEROOT/../intel-apollolake/templates/default/template.conf
+require $OEROOT/../meta-gateway/templates/default/template.conf
 
 CUBE_ESSENTIAL_EXTRA_INSTALL += "\
     packagegroup-uefi-secure-boot \
