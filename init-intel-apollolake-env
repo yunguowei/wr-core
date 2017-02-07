@@ -57,9 +57,16 @@ fi
      [ -n "$BUILDDIR" ] && cd $BUILDDIR
 if [ $? = 0 ] ; then
    if [ ! -e .configured ] ; then
+      CUSTOM_LAYERS=""
+      # Add custom layers if they exist
+      if [ -d $OEROOT/../../../custom-layers ] ; then
+	  for e in `ls $OEROOT/../../../custom-layers/*/conf/layer.conf $OEROOT/../../custom-layers/*/*/conf/layer.conf 2> /dev/null`; do
+	      cust_layer="${e%/conf/layer.conf}"
+	      CUSTOM_LAYERS="$CUSTOM_LAYERS ${cust_layer#$OEROOT/../}"
+	  done
+      fi
       perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
-
-      	   for e in wrlabs-integration \
+          for e in $CUSTOM_LAYERS wrlabs-integration \
 	       meta-secure-env \
 	       meta-measured \
 	       wr-kernel \
