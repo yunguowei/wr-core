@@ -60,7 +60,7 @@ if [ $? = 0 ] ; then
       CUSTOM_LAYERS=""
       # Add custom layers if they exist
       if [ -d $OEROOT/../../../custom-layers ] ; then
-	  for e in `ls $OEROOT/../../../custom-layers/*/conf/layer.conf $OEROOT/../../custom-layers/*/*/conf/layer.conf 2> /dev/null`; do
+	  for e in `ls $OEROOT/../../../custom-layers/*/conf/layer.conf $OEROOT/../../../custom-layers/*/*/conf/layer.conf $OEROOT/../../../custom-layers/*/*/*/conf/layer.conf 2> /dev/null`; do
 	      cust_layer="${e%/conf/layer.conf}"
 	      CUSTOM_LAYERS="$CUSTOM_LAYERS ${cust_layer#$OEROOT/../}"
 	  done
