@@ -148,7 +148,14 @@ require $OEROOT/../meta-secure-env/templates/feature/tpm/template.conf
 require $OEROOT/../meta-secure-env/templates/feature/tpm2/template.conf
 require $OEROOT/../intel-apollolake/templates/default/template.conf
 require $OEROOT/../meta-gateway/templates/default/template.conf
+EOF
 
+# Process any custom content overrides
+if [ -f $OEROOT/../../../default/template.conf ] ; then
+    echo "require $OEROOT/../../../default/template.conf" >> conf/local.conf
+fi
+
+cat<<EOF>>conf/local.conf
 CUBE_ESSENTIAL_EXTRA_INSTALL += "\
     packagegroup-uefi-secure-boot \
     packagegroup-mok-secure-boot \
