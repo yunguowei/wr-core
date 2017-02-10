@@ -156,12 +156,6 @@ if [ -f $OEROOT/../../../default/template.conf ] ; then
 fi
 
 cat<<EOF>>conf/local.conf
-CUBE_ESSENTIAL_EXTRA_INSTALL += "\
-    packagegroup-uefi-secure-boot \
-    packagegroup-mok-secure-boot \
-    packagegroup-tpm2 \
-"
-
 # Kernel overrides
 INHERIT += "blacklist"
 PNBLACKLIST[linux-windriver] = "Recipe not buildable without local kernel git"
