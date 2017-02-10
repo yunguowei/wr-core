@@ -51,12 +51,14 @@ S_ARGS="$@"
 if [ "$S_ARGS" = "" ] ; then
    S_ARGS=build-intel-apollolake
 fi
+unset CONFIG_UPDATED
 
 . $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
      $OEROOT/scripts/oe-setup-builddir && \
      [ -n "$BUILDDIR" ] && cd $BUILDDIR
 if [ $? = 0 ] ; then
    if [ ! -e .configured ] ; then
+      CONFIG_UPDATED=1
       CUSTOM_LAYERS=""
       # Add custom layers if they exist
       if [ -d $OEROOT/../../../custom-layers ] ; then
