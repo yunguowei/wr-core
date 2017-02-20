@@ -135,13 +135,7 @@ require $OEROOT/../wr-base/templates/default/template.conf
 require $OEROOT/../wrlabs-integration/templates/default/template.conf
 require $OEROOT/../meta-gateway/templates/default/template.conf
 require $OEROOT/../meta-secure-env/templates/default/template.conf
-require $OEROOT/../meta-secure-env/templates/feature/tpm/template.conf
 require $OEROOT/../meta-secure-env/templates/feature/tpm2/template.conf
-
-CUBE_ESSENTIAL_EXTRA_INSTALL += "\
-    packagegroup-tpm2 \
-"
-
 
 # Kernel overrides
 INHERIT += "blacklist"
