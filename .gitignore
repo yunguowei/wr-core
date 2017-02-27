@@ -1,4 +1,2 @@
-/build*
-/sstate-cache
-/downloads
-/layers/pulsar
+/build/buildtools/*
+/build-*
