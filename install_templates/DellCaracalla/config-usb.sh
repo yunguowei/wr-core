@@ -57,7 +57,7 @@ install a working system configuration on to your internal hard drive.
 
 INSTALLER_COMPLETE="Installation is now complete"
 
-CONFIRM_INSTALL=1
+CONFIRM_INSTALL=${CONFIRM_INSTALL=1}
 CONFIRM_REBOOT=0
 
 CMD_GRUB_INSTALL="/usr/sbin/grub-install"
