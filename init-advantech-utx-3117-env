@@ -162,6 +162,9 @@ PULSAR_UNATTENDED_UPGRADE = "true"
 
 PNWHITELIST_LAYERS_forcevariable = ""
 
+# Extra software for the Gateway layers
+CUBE_GW_EXTRAS += "gps-utils gpsd"
+
 PREMIRRORS_append := "\\
     http://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
     https://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
