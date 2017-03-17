@@ -74,6 +74,7 @@ if [ $? = 0 ] ; then
 	       pulsar \
 	       meta-overc/meta-cube \
 	       meta-cloud-services \
+	       meta-cloud-services/meta-openstack \
                meta-browser \
 	       meta-security \
                meta-openembedded/meta-initramfs \
@@ -162,9 +163,6 @@ PULSAR_UNATTENDED_UPGRADE = "true"
 
 PNWHITELIST_LAYERS_forcevariable = ""
 
-# Extra software for the Gateway layers
-CUBE_GW_EXTRAS += "gps-utils gpsd"
-
 PREMIRRORS_append := "\\
     http://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
     https://.*/.* file://\${TOPDIR}/../premirrors8/ \n \\
@@ -184,6 +182,27 @@ PREFERRED_PROVIDER_java2-runtime = "openjre-8"
 
 CUBE_DOM_GW_EXTRA_INSTALL += "\
     openjre-8 \
+    gps-utils \
+    gpsd \
+    qpid \
+    qpid-python \
+    libmodbus \
+    nodejs \
+    mosquitto \
+    iasl \
+    subversion \
+    conntrack-tools \
+    fuse \
+    igmpproxy \
+    iperf \
+    ipset \
+    libcli \
+    umip \
+    ntfsprogs \
+    ntfs-3g \
+    sshfs-fuse \
+    tftp-hpa \ 
+    tftp-hpa-server \
 "
 
 EOF
