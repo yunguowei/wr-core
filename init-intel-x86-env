@@ -63,6 +63,7 @@ if [ $? = 0 ] ; then
 	       wr-kernel \
 	       meta-intel \
 	       meta-intel/meta-isg/meta-valleyisland \
+	       meta-gateway \
 	       wr-base \
 	       wr-fixes \
 	       wr-tools-debug \
@@ -129,6 +130,7 @@ SERIAL_CONSOLES_CHECK_intel-corei7-64 = "\${@bb.utils.contains('KERNEL_FEATURES'
 ## Included feature templates
 require $OEROOT/../wr-kernel/templates/default/template.conf
 require $OEROOT/../wr-base/templates/default/template.conf
+require $OEROOT/../meta-gateway/templates/default/template.conf
 require $OEROOT/../wrlabs-integration/templates/default/template.conf
 
 # Kernel overrides
