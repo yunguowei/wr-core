@@ -5,10 +5,10 @@
 
 (
     cd layers/oe-core && \
-    git push git@github.com:WindRiver-OpenSourceLabs/oe-core master:master
+    git push -f git@github.com:WindRiver-OpenSourceLabs/oe-core master:master
 )
 
 (
     cd layers/bitbake && \
-    git push git@github.com:WindRiver-OpenSourceLabs/bitbake master:master
+    git push -f git@github.com:WindRiver-OpenSourceLabs/bitbake master:master
 )
