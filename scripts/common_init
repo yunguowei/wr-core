@@ -1,0 +1,185 @@
+
+# When CONFIG_REV changes the local.conf and bblayers files will get
+# rebuilt
+
+CONFIG_REV=5
+DO_CONFIG=1
+
+if [ -z "$BDIR" ]; then
+    if [ -z "$S_ARGS" ]; then
+        BDIR="build"
+    else
+        BDIR="$S_ARGS"
+        if [ "$BDIR" = "/" ]; then
+            echo >&2 "Error: / is not supported as a build directory."
+            return 1
+        fi
+
+        # Remove any possible trailing slashes. This is used to work around
+        # buggy readlink in Ubuntu 10.04 that doesn't ignore trailing slashes
+        # and hence "readlink -f new_dir_to_be_created/" returns empty.
+        BDIR=$(echo $BDIR | sed -re 's|/+$||')
+
+        BDIR=$(readlink -f "$BDIR")
+        if [ -z "$BDIR" ]; then
+            PARENTDIR=$(dirname "$S_ARGS")
+            echo >&2 "Error: the directory $PARENTDIR does not exist?"
+            return 1
+        fi
+    fi
+    if [ -n "$2" ]; then
+        BITBAKEDIR="$2"
+    fi
+fi
+if [ "${BDIR#/}" != "$BDIR" ]; then
+    BUILDDIR="$BDIR"
+else
+    BUILDDIR="$(pwd)/$BDIR"
+fi
+unset BDIR
+
+# Setup the links for the overc-installer if they don't exist
+for i in cube-cfg cube-ctl ; do
+    if [ ! -e $OEROOT/../../overc-installer/sbin/$i  ] ; then
+	ln -sf ../../layers/meta-overc/meta-cube/recipes-support/overc-utils/source/$i $OEROOT/../../overc-installer/sbin/$i
+    fi
+done
+
+if [ -e $BUILDDIR/.configured ] ; then
+    DO_CONFIG=`cat $BUILDDIR/.configured`
+    if [ "$DO_CONFIG" != "$CONFIG_REV" ] ; then
+	DO_CONFIG=1
+	# This is a reconfigure so we try to patch the original result
+	echo "Rebuilding configuration..."
+	(
+	    cd $BUILDDIR/conf || exit 0
+	    for i in bblayers.conf local.conf; do
+		if [ -e $i.orig ] ; then
+		    diff -u $i.orig $i >$i.local_changes
+		    if [ $? = 0 ]; then
+			rm $i.local_changes
+		    fi
+		    mv $i.orig $i.orig.old
+		fi
+		if [ -e $i ] ; then
+		    mv $i $i.old
+		fi
+	    done
+	)
+    fi
+fi
+
+. $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
+     $OEROOT/scripts/oe-setup-builddir && \
+     [ -n "$BUILDDIR" ] && cd $BUILDDIR
+if [ $? = 0 ] ; then
+    if [ ! -e .configured -o "$DO_CONFIG" = 1 ] ; then
+	perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
+	for e in wrlabs-integration \
+	    $EXTRA_PRE_LAYERS \
+	    wr-hac-agent \
+	    meta-overc/meta-cube \
+	    meta-cloud-services \
+            meta-browser \
+	    meta-security \
+            meta-openembedded/meta-initramfs \
+            meta-openembedded/meta-filesystems \
+	    meta-openembedded/meta-networking \
+	    meta-openembedded/meta-multimedia \
+	    meta-openembedded/meta-gnome \
+	    meta-openembedded/meta-oe \
+	    meta-openembedded/meta-python \
+	    meta-openembedded/meta-perl \
+	    meta-openembedded/meta-webserver \
+	    meta-openembedded/meta-xfce \
+	    external-binaries \
+	    meta-virtualization \
+	    oe-meta-go $EXTRA_POST_LAYERS ; do
+	    if [ -e $OEROOT/../$e ] ; then
+    		perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
+	    fi
+	done
+	cat<<EOF>>conf/local.conf
+DISTRO = "wrlinux-small"
+WRLINUX_RCPLVERSION = ".6"
+$MACH_LOCAL_CONF
+# Activate systemd
+VIRTUAL-RUNTIME_init_manager = " systemd "
+VIRTUAL-RUNTIME_syslog = "sysklogd"
+DISTRO_FEATURES_append = " systemd x11 opengl"
+DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
+KERNEL_FEATURES_append = " cfg/systemd.scc"
+USER_CLASSES = "buildstats buildstats-summary"
+
+EXTRA_IMAGEDEPENDS += "\${@bb.utils.contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
+
+## Included feature templates
+#require `pwd`/../layers/wr-kernel/templates/default/template.conf
+#require `pwd`/../layers/wr-base/templates/default/template.conf
+require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
+
+# Kernel overrides
+INHERIT += "blacklist"
+PNBLACKLIST[linux-windriver] = "Recipe not buildable without local kernel git"
+PNBLACKLIST[linux-windriver-dummy] = "Recipe not buildable without local kernel git"
+# Unblacklist the YP kernel
+PNBLACKLIST[linux-yocto] = ""
+PNBLACKLIST[linux-yocto-rt] = ""
+PNBLACKLIST[linux-yocto-tiny] = ""
+SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
+# EXTRA_BBMASK may be appended in a layer or template
+BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
+
+PREFERRED_VERSION_linux-yocto = "4.8%"
+PREFERRED_VERSION_linux-yocto-rt = "4.8%"
+
+DL_DIR = "\${TOPDIR}/../downloads"
+SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
+PULSAR_UNATTENDED_UPGRADE = "true"
+
+PNWHITELIST_LAYERS_forcevariable = ""
+
+PRSERV_HOST = "localhost:0"
+
+SDK_EXT_TYPE = "minimal"
+SDK_INCLUDE_TOOLCHAIN = "1"
+
+IMAGE_FSTYPES_remove = "wic"
+
+PREMIRRORS_append := "\\
+    http://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
+    https://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
+    hg://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
+"
+
+OVERC_ESSENTIAL_MODE = "read-write"
+
+
+###-----------------------------------------------------------###
+### Everyting Above was automatically generated               ###
+### If you have changes try to put them below this line       ###
+### so they can be managed by the auto configuration patcher. ###
+###-----------------------------------------------------------###
+
+EOF
+	(
+	    cd conf || exit 0
+	    # Check to see if we need to patch 
+	    for i in bblayers.conf local.conf; do
+		cp $i $i.orig
+		if [ -e $i.local_changes ] ; then
+		    patch -p0 < $i.local_changes
+		    if [ $? != 0 ]; then
+			echo "ERROR patching your local changes"
+			mv $i.old $i.saved
+			echo "Look at the original: $i.saved"
+		    fi
+		    rm -f $i.local_changes
+		fi
+	    done
+	)
+	echo $CONFIG_REV > .configured
+    fi
+fi
+
+unset CONFIG_REV

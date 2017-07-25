@@ -34,6 +34,7 @@ fi
 
 # Figure out the "TOP" relative to TOP/layers/oe-core
 THIS_SCRIPT=`dirname $OEROOT`
+THIS_SCRIPT=`dirname $THIS_SCRIPT`
 THIS_SCRIPT=$THIS_SCRIPT/init-intel-x86-env
 
 if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-intel-x86-env ]; then
@@ -52,53 +53,15 @@ if [ "$S_ARGS" = "" ] ; then
    S_ARGS=build-intel-x86
 fi
 
-. $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
-     $OEROOT/scripts/oe-setup-builddir && \
-     [ -n "$BUILDDIR" ] && cd $BUILDDIR
-if [ $? = 0 ] ; then
-   if [ ! -e .configured ] ; then
-      perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
+# Additional Layers
+EXTRA_PRE_LAYERS=meta-intel
 
-# Old layers
-#	       wr-base \
-#	       wr-fixes \
-#	       wr-tools-debug \
-#	       wr-kernel \
-
-      	   for e in wrlabs-integration \
-	       meta-intel \
-	       pulsar \
-	       wr-hac-agent \
-	       meta-overc/meta-cube \
-	       meta-cloud-services \
-               meta-browser \
-	       meta-security \
-               meta-openembedded/meta-initramfs \
-               meta-openembedded/meta-filesystems \
-	       meta-openembedded/meta-networking \
-	       meta-openembedded/meta-multimedia \
-	       meta-openembedded/meta-gnome \
-	       meta-openembedded/meta-oe \
-	       meta-openembedded/meta-python \
-	       meta-openembedded/meta-perl \
-	       meta-openembedded/meta-webserver \
-	       meta-openembedded/meta-xfce \
-	       external-binaries \
-	       meta-virtualization \
-	       oe-meta-go ; do
-	       if [ -e $OEROOT/../$e ] ; then
-    		   perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
-	       fi
-      done
-#      perl -p -i -e 's#^(.*)oe-core/meta(.*)#$1wrlinux \\\n$1oe-core/meta$2#' conf/bblayers.conf
-
-      cat<<EOF>>conf/local.conf
-DISTRO = "wrlinux-small"
-WRLINUX_RCPLVERSION = ".6"
+# Local machine configuration
+MACH_LOCAL_CONF='
 MACHINE = "intel-corei7-64"
 # Set wide compatibility with core2 processors
 DEFAULTTUNE = "core2-64"
-COMPATIBLE_MACHINE_intel-corei7-64 = "${MACHINE}"
+COMPATIBLE_MACHINE_intel-corei7-64 = "intel-corei7-64"
 # Set default machine to select in the hob interface
 HOB_MACHINE = "intel-corei7-64"
 DEFAULT_IMAGE = "wrlinux-image-glibc-small"
@@ -106,13 +69,6 @@ LINUX_KERNEL_TYPE = "preempt-rt"
 PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto-rt"
 KTYPE_ENABLED = "preempt-rt"
 PACKAGE_CLASSES = "package_rpm"
-# Activate systemd
-VIRTUAL-RUNTIME_init_manager = " systemd "
-VIRTUAL-RUNTIME_syslog = "sysklogd"
-DISTRO_FEATURES_append = " systemd x11 opengl"
-DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
-KERNEL_FEATURES_append = " cfg/systemd.scc"
-USER_CLASSES = "buildstats buildstats-summary"
 IMAGE_FSTYPES += "tar.bz2"
 NOISO = "1"
 IMAGE_FSTYPES += "ext3"
@@ -120,56 +76,16 @@ IMAGE_FSTYPES += "live"
 
 MULTILIBS = "multilib:lib32"
 DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
+'
 
-EXTRA_IMAGEDEPENDS += "\${@bb.utils.contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
+. $OEROOT/../../scripts/common_init
 
-## Included feature templates
-#require `pwd`/../layers/wr-kernel/templates/default/template.conf
-#require `pwd`/../layers/wr-base/templates/default/template.conf
-require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
-
-# Kernel overrides
-INHERIT += "blacklist"
-PNBLACKLIST[linux-windriver] = "Recipe not buildable without local kernel git"
-PNBLACKLIST[linux-windriver-dummy] = "Recipe not buildable without local kernel git"
-# Unblacklist the YP kernel
-PNBLACKLIST[linux-yocto] = ""
-PNBLACKLIST[linux-yocto-rt] = ""
-PNBLACKLIST[linux-yocto-tiny] = ""
-SRC_URI_pn-kern-tools-native = "git://git.yoctoproject.org/yocto-kernel-tools.git"
-# EXTRA_BBMASK may be appended in a layer or template
-BBMASK = "/(NO_MATCH/\${EXTRA_BBMASK})"
-
-PREFERRED_VERSION_linux-yocto = "4.8%"
-PREFERRED_VERSION_linux-yocto-rt = "4.8%"
-
-DL_DIR = "\${TOPDIR}/../downloads"
-SSTATE_DIR = "\${TOPDIR}/../sstate-cache"
-PULSAR_UNATTENDED_UPGRADE = "true"
-
-PNWHITELIST_LAYERS_forcevariable = ""
-
-PRSERV_HOST = "localhost:0"
-
-SDK_EXT_TYPE = "minimal"
-SDK_INCLUDE_TOOLCHAIN = "1"
-
-IMAGE_FSTYPES_remove = "wic"
-
-PREMIRRORS_append := "\\
-    http://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
-    https://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
-    hg://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
-"
-
-OVERC_ESSENTIAL_MODE = "read-write"
-
-EOF
-      touch .configured
-   fi
-fi
 unset OEROOT
 unset BBPATH
 unset THIS_SCRIPT
 unset S_ARGS
 unset TEMPLATECONF
+unset DO_CONFIG
+unset EXTRA_PRE_LAYERS
+unset EXTRA_POST_LAYERS
+unset MACH_LOCAL_CONF
