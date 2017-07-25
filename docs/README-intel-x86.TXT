@@ -16,7 +16,13 @@ cd wr-core
 ./scripts/host_package_install.sh --install --yes
 #########################################################################
 
+# Init the environment
 . init-intel-x86-env
+# setup the installer
+(cd ../overc-installer ; \
+rsync -a -v ../layers/meta-overc/meta-cube/recipes-support/overc-utils/source/cube-cfg sbin/cube-cfg ; \
+rsync -a -v ../layers/meta-overc/meta-cube/recipes-support/overc-utils/source/cube-ctl sbin/cube-ctl )
+# Build the image
 bitbake cube-desktop cube-dom0 cube-essential
 
 # Build a self-bootable image for IntelCubeDesktop board
