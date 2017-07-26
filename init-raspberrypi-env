@@ -52,7 +52,7 @@ if [ "$S_ARGS" = "" ] ; then
    S_ARGS=build-raspberrypi
 fi
 
-. $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
+source $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
      $OEROOT/scripts/oe-setup-builddir && \
      [ -n "$BUILDDIR" ] && cd $BUILDDIR
 if [ $? = 0 ] ; then

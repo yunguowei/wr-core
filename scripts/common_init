@@ -69,7 +69,7 @@ if [ -e $BUILDDIR/.configured ] ; then
     fi
 fi
 
-. $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
+source $OEROOT/scripts/oe-buildenv-internal "$S_ARGS" $OEROOT/../bitbake && \
      $OEROOT/scripts/oe-setup-builddir && \
      [ -n "$BUILDDIR" ] && cd $BUILDDIR
 if [ $? = 0 ] ; then
@@ -93,8 +93,8 @@ if [ $? = 0 ] ; then
 #	    meta-measured \
 
 	perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
-	for e in wrlabs-integration \
-	    $EXTRA_PRE_LAYERS \
+	for e in `echo -E $EXTRA_PRE_LAYERS` \
+	    wrlabs-integration \
 	    wr-hac-agent \
 	    meta-overc/meta-cube \
 	    meta-cloud-services \
@@ -112,7 +112,8 @@ if [ $? = 0 ] ; then
 	    meta-openembedded/meta-xfce \
 	    external-binaries \
 	    meta-virtualization \
-	    oe-meta-go $EXTRA_POST_LAYERS ; do
+	    oe-meta-go \
+	    `echo -E $EXTRA_POST_LAYERS` ; do
 	    if [ -e $OEROOT/../$e ] ; then
     		perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
 	    fi

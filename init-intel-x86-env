@@ -78,7 +78,7 @@ MULTILIBS = "multilib:lib32"
 DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
 '
 
-. $OEROOT/../../scripts/common_init
+source $OEROOT/../../scripts/common_init
 
 unset OEROOT
 unset BBPATH
