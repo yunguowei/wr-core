@@ -56,14 +56,13 @@ fi
 # Additional Layers
 EXTRA_PRE_LAYERS=meta-intel
 
-EXTRA_POST_LAYERS="wr-secure-env
-    wr-secure-env/meta-secure-core/meta
-    wr-secure-env/meta-secure-core/meta-signing-key
-    wr-secure-env/meta-secure-core/meta-efi-secure-boot
-    wr-secure-env/meta-secure-core/meta-tpm
-    wr-secure-env/meta-secure-core/meta-tpm2
-    wr-secure-env/meta-secure-core/meta-integrity
-    wr-secure-env/meta-secure-core/meta-encrypted-storage
+EXTRA_POST_LAYERS="meta-secure-core/meta
+    meta-secure-core/meta-signing-key
+    meta-secure-core/meta-efi-secure-boot
+    meta-secure-core/meta-tpm
+    meta-secure-core/meta-tpm2
+    meta-secure-core/meta-integrity
+    meta-secure-core/meta-encrypted-storage
 "
 
 # Local machine configuration
@@ -89,13 +88,11 @@ DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
 
 INITRAMFS_IMAGE = "secure-core-image-initramfs"
 
-require ../layers/wr-secure-env/templates/default/template.conf
-require ../layers/wr-secure-env/templates/feature/efi-secure-boot/template.conf
-require ../layers/wr-secure-env/templates/feature/ima/template.conf
-require ../layers/wr-secure-env/templates/feature/encrypted-storage/template.conf
-require ../layers/wr-secure-env/templates/feature/tpm/template.conf
-require ../layers/wr-secure-env/templates/feature/tpm2/template.conf
-require ../layers/wr-secure-env/templates/feature/development/template.conf
+require ../layers/wrlabs-integration/templates/feature/efi-secure-boot/template.conf
+require ../layers/wrlabs-integration/templates/feature/ima/template.conf
+require ../layers/wrlabs-integration/templates/feature/encrypted-storage/template.conf
+require ../layers/wrlabs-integration/templates/feature/tpm/template.conf
+require ../layers/wrlabs-integration/templates/feature/tpm2/template.conf
 '
 
 source $OEROOT/../../scripts/common_init
