@@ -102,3 +102,11 @@
 	path = layers/meta-raspberrypi
 	url = git://git.yoctoproject.org/meta-raspberrypi
 	branch = master
+[submodule "layers/meta-secure-env"]
+	path = layers/meta-secure-env
+	url = ../meta-secure-env
+	branch = master
+[submodule "layers/meta-measured"]
+	path = layers/meta-measured
+	url = ../meta-measured
+	branch = master
