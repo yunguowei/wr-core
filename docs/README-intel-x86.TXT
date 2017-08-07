@@ -9,7 +9,7 @@ For official images please visit:
 http://pulsar.windriver.com
 
 ############## Quick start clip here ###################
-git clone -b master --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
+git clone -b master-oci --recurse-submodules https://github.com/WindRiver-OpenSourceLabs/wr-core
 cd wr-core
 
 ######### The first time only, check for required host packages #########
@@ -23,7 +23,7 @@ cd wr-core
 bitbake cube-desktop cube-dom0 cube-essential
 
 # Build a self-bootable image for IntelCubeDesktop board
-sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/IntelCubeDesktop/IntelCubeDesktop-live.sh --target-config IntelCubeDesktop-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar8-intelcubedesktop.img
+sudo ../overc-installer/sbin/cubeit --force --config `pwd`/../install_templates/IntelCubeDesktop/IntelCubeDesktop-live.sh --target-config IntelCubeDesktop-live.sh --artifacts `pwd`/tmp/deploy/images/intel-corei7-64 pulsar-intelcubedesktop.img
 # Then dd it to an usb stick or sd card and boot up Pulsar directly on target
 
 # Or build an installer image or USB stick
@@ -40,7 +40,7 @@ cd /opt/installer
 
 ### Optionally simulate the image with kvm/qemu
 
-kvm -drive file=pulsar8-intelcubedesktop.img,if=virtio -m 2000 -nographic -vnc :3 -serial mon:stdio -vga vmware -net user,hostfwd=tcp::4440-10.0.2.15:22,hostfwd=tcp::4441-10.0.2.15:2222 -net nic -usbdevice tablet
+kvm -drive file=pulsar-intelcubedesktop.img,if=virtio -m 2000 -nographic -vnc :3 -serial mon:stdio -vga vmware -net user,hostfwd=tcp::4440-10.0.2.15:22,hostfwd=tcp::4441-10.0.2.15:2222 -net nic -usbdevice tablet
 
 # Note: The terminal is your serial port, and you can access the
 #       grapics console by starting: vncviewer $YOUR_SERVER_IP:3
