@@ -95,6 +95,7 @@ if [ $? = 0 ] ; then
 	perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
 	for e in `echo -E $EXTRA_PRE_LAYERS` \
 	    wrlabs-integration \
+	    meta-gateway \
 	    wr-hac-agent \
 	    meta-overc/meta-cube \
 	    meta-cloud-services \
@@ -136,7 +137,7 @@ EXTRA_IMAGEDEPENDS += "\${@bb.utils.contains('INCOMPATIBLE_LICENSE', 'GPLv3', ''
 #require `pwd`/../layers/wr-kernel/templates/default/template.conf
 #require `pwd`/../layers/wr-base/templates/default/template.conf
 require `pwd`/../layers/wrlabs-integration/templates/default/template.conf
-
+require `pwd`/../layers/meta-gateway/templates/default/template.conf
 # Kernel overrides
 INHERIT += "blacklist"
 PNBLACKLIST[linux-windriver] = "Recipe not buildable without local kernel git"
