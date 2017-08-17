@@ -41,11 +41,11 @@
 [submodule "meta-overc"]
 	path = layers/meta-overc
 	url = ../../OverC/meta-overc
-	branch = master
+	branch = master-oci
 [submodule "overc-installer"]
 	path = overc-installer
 	url = ../../OverC/overc-installer
-	branch = master
+	branch = master-oci
 [submodule "meta-openembedded"]
 	path = layers/meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
