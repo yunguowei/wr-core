@@ -35,9 +35,9 @@ fi
 # Figure out the "TOP" relative to TOP/layers/oe-core
 THIS_SCRIPT=`dirname $OEROOT`
 THIS_SCRIPT=`dirname $THIS_SCRIPT`
-THIS_SCRIPT=$THIS_SCRIPT/init-intel-x86-env-secure
+THIS_SCRIPT=$THIS_SCRIPT/init-intel-x86-secure-env
 
-if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-intel-x86-env-secure ]; then
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-intel-x86-secure-env ]; then
    echo "Error: This script needs to be sourced. Please run as '. $THIS_SCRIPT'"
    exit 1
 fi
