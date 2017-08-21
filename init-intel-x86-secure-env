@@ -88,7 +88,7 @@ DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
 
 require ../layers/wrlabs-integration/templates/feature/efi-secure-boot/template.conf
 require ../layers/wrlabs-integration/templates/feature/ima/template.conf
-require ../layers/wrlabs-integration/templates/feature/encrypted-storage/template.conf
+require ../layers/wrlabs-integration/templates/feature/luks/template.conf
 require ../layers/wrlabs-integration/templates/feature/tpm/template.conf
 require ../layers/wrlabs-integration/templates/feature/tpm2/template.conf
 '
