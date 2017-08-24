@@ -91,6 +91,8 @@ require ../layers/wrlabs-integration/templates/feature/ima/template.conf
 require ../layers/wrlabs-integration/templates/feature/luks/template.conf
 require ../layers/wrlabs-integration/templates/feature/tpm/template.conf
 require ../layers/wrlabs-integration/templates/feature/tpm2/template.conf
+
+INHERIT += "sign_rpm_ext"
 '
 
 source $OEROOT/../../scripts/common_init
