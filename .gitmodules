@@ -40,8 +40,8 @@
 	branch = pulsar-8
 [submodule "meta-overc"]
 	path = layers/meta-overc
-	url = ../../OverC/meta-overc
-	branch = master-oci
+	url = ../meta-overc
+	branch = jwessel-master-oci
 [submodule "overc-installer"]
 	path = overc-installer
 	url = ../../OverC/overc-installer
