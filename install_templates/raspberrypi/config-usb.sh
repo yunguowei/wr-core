@@ -29,8 +29,7 @@ HDINSTALL_CONTAINERS="${ARTIFACTS_DIR}/cube-dom0-raspberrypi2.tar.bz2:console:vt
 "
 INSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-essential-raspberrypi2.tar.bz2"
 
-NETWORK_DEVICE=""
-NETWORK_DEVICE_CLASSES="eth+ wl+ en+"
+NETWORK_DEVICE="eth+ wl+ en+"
 
 # Uncomment to specify path to init.pp
 #INSTALL_PUPPET_DIR="puppet"
