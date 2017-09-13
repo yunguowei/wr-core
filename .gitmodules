@@ -41,7 +41,7 @@
 [submodule "meta-overc"]
 	path = layers/meta-overc
 	url = ../meta-overc
-	branch = jwessel-master-oci
+	branch = master-oci
 [submodule "overc-installer"]
 	path = overc-installer
 	url = ../../OverC/overc-installer
