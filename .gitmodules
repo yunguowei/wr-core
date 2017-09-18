@@ -102,7 +102,3 @@
 	path = layers/meta-raspberrypi
 	url = git://git.yoctoproject.org/meta-raspberrypi
 	branch = master
-[submodule "meta-secure-core"]
-	path = layers/meta-secure-core
-	url = https://github.com/jiazhang0/meta-secure-core.git
-	branch = master
