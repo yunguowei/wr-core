@@ -2,7 +2,7 @@
 # When CONFIG_REV changes the local.conf and bblayers files will get
 # rebuilt
 
-CONFIG_REV=7
+CONFIG_REV=8
 DO_CONFIG=1
 
 if [ -z "$BDIR" ]; then
