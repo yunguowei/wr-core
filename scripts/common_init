@@ -101,6 +101,7 @@ if [ $? = 0 ] ; then
 	    meta-cloud-services \
             meta-browser \
 	    meta-security \
+	    meta-java \
             meta-openembedded/meta-initramfs \
             meta-openembedded/meta-filesystems \
 	    meta-openembedded/meta-networking \
@@ -174,6 +175,8 @@ PREMIRRORS_append := "\\
 
 OVERC_ESSENTIAL_MODE = "read-write"
 
+PREFERRED_PROVIDER_virtual/java-initial-native = "cacao-initial-native"
+PREFERRED_PROVIDER_virtual/java-native = "jamvm-native"
 
 ###-----------------------------------------------------------###
 ### Everyting Above was automatically generated               ###
