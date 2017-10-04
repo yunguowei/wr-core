@@ -2,7 +2,7 @@
 # When CONFIG_REV changes the local.conf and bblayers files will get
 # rebuilt
 
-CONFIG_REV=8
+CONFIG_REV=9
 DO_CONFIG=1
 
 if [ -z "$BDIR" ]; then
@@ -45,7 +45,7 @@ for i in cube-cfg cube-ctl ; do
     fi
 done
 
-if [ -e $BUILDDIR/.configured ] ; then
+if [ -e $BUILDDIR/.configured -o -e $BUILDDIR/conf/local.conf ] ; then
     DO_CONFIG=`cat $BUILDDIR/.configured`
     if [ "$DO_CONFIG" != "$CONFIG_REV" ] ; then
 	DO_CONFIG=1
@@ -94,6 +94,7 @@ if [ $? = 0 ] ; then
 
 	perl -p -i -e 's#BBLAYERS \?=#BBLAYERS =#' conf/bblayers.conf
 	for e in `echo -E $EXTRA_PRE_LAYERS` \
+            $CUSTOM_LAYERS \
 	    wrlabs-integration \
 	    meta-gateway \
 	    wr-hac-agent \
@@ -127,7 +128,7 @@ $MACH_LOCAL_CONF
 # Activate systemd
 VIRTUAL-RUNTIME_init_manager = " systemd "
 VIRTUAL-RUNTIME_syslog = "sysklogd"
-DISTRO_FEATURES_append = " systemd x11 opengl"
+DISTRO_FEATURES_append = " systemd x11 opengl virtualization"
 DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
 KERNEL_FEATURES_append = " cfg/systemd.scc"
 USER_CLASSES = "buildstats buildstats-summary"
