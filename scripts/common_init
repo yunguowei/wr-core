@@ -103,6 +103,7 @@ if [ $? = 0 ] ; then
             meta-browser \
 	    meta-security \
 	    meta-java \
+	    meta-dpdk \
             meta-openembedded/meta-initramfs \
             meta-openembedded/meta-filesystems \
 	    meta-openembedded/meta-networking \
