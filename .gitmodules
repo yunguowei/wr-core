@@ -106,11 +106,11 @@
 	path = layers/meta-secure-core
 	url = https://github.com/jiazhang0/meta-secure-core.git
 	branch = master
-[submodule "meta-java"]
-	path = layers/meta-java
-	url = git://git.yoctoproject.org/meta-java
-	branch = master
 [submodule "meta-dpdk"]
 	path = layers/meta-dpdk
 	url = git://git.yoctoproject.org/meta-dpdk
 	branch = master
+[submodule "meta-java"]
+	path = layers/meta-java
+	url = ../meta-java
+	branch = pulsar-2017
