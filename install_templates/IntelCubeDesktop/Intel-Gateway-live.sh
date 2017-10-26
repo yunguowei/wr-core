@@ -19,11 +19,17 @@ export LOCAL_CUSTOM_HDD_POST_FUNCS="my_local_post_func"
 
 my_local_post_func()
 {
-        #copy the HAL id&passwd from dom0 to cube-srver/cube-gw/cube-desktop
-	CNS="cube-server cube-gw cube-desktop"
-        for c in ${CNS}; do
-                if [ -d ${TMPMNT}/opt/container/$c/rootfs ]; then
-                        cat ${TMPMNT}/opt/container/dom0/rootfs/var/lib/cube-cmd-server/auth.db > ${TMPMNT}/opt/container/$c/rootfs/etc/cube-cmd.auth
-                fi
-        done
+    #copy the HAL id&passwd from dom0 to cube-srver/cube-gw/cube-desktop
+    CNS="cube-server cube-gw cube-desktop"
+    for c in ${CNS}; do
+        if [ -d ${TMPMNT}/opt/container/$c/rootfs ]; then
+            cat ${TMPMNT}/opt/container/dom0/rootfs/var/lib/cube-cmd-server/auth.db > ${TMPMNT}/opt/container/$c/rootfs/etc/cube-cmd.auth
+        fi
+    done
+
+    # cube-gw configuration
+    rm -f ${TMPMNT}/opt/container/cube-gw/rootfs/etc/systemd/system/multi-user.target.wants/named.service
+    ln -sf /dev/null ${TMPMNT}/opt/container/cube-gw/rootfs/etc/systemd/system/named.service
+    rm -f ${TMPMNT}/opt/container/cube-gw/rootfs/etc/systemd/system/systemd-resolved.service
+    ln -sf /dev/null ${TMPMNT}/opt/container/lxc/cube-gw/rootfs/etc/systemd/system/systemd-resolved.service
 }
