@@ -6,26 +6,6 @@
 	path = layers/oe-core
 	url = ../oe-core
 	branch = master
-#[submodule "wrlinux"]
-#	path = layers/wrlinux
-#	url = ../wrlinux
-#	branch = LB13_8.0_RCPL0001
-#[submodule "wr-kernel"]
-#	path = layers/wr-kernel
-#	url = ../wr-kernel
-#	branch = LB13_8.0_RCPL0001
-#[submodule "wr-base"]
-#	path = layers/wr-base
-#	url = ../wr-base
-#	branch = LB13_8.0_RCPL0001
-#[submodule "wr-fixes"]
-#	path = layers/wr-fixes
-#	url = ../wr-fixes
-#	branch = LB13_8.0_RCPL0001
-#[submodule "wr-tools-debug"]
-#	path = layers/wr-tools-debug
-#	url = ../wr-tools-debug
-#	branch = LB13_8.0_RCPL0001
 [submodule "meta-intel"]
 	path = layers/meta-intel
 	url = git://git.yoctoproject.org/meta-intel
