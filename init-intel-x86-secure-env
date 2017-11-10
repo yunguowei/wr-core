@@ -83,9 +83,6 @@ NOISO = "1"
 IMAGE_FSTYPES += "ext3"
 IMAGE_FSTYPES += "live"
 
-MULTILIBS = "multilib:lib32"
-DEFAULTTUNE_virtclass-multilib-lib32 = "x86"
-
 require ../layers/wrlabs-integration/templates/feature/efi-secure-boot/template.conf
 require ../layers/wrlabs-integration/templates/feature/ima/template.conf
 require ../layers/wrlabs-integration/templates/feature/luks/template.conf
