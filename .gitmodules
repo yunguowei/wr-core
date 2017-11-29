@@ -1,15 +1,15 @@
 [submodule "bitbake"]
 	path = layers/bitbake
 	url = ../bitbake
-	branch = master
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "oe-core"]
 	path = layers/oe-core
 	url = ../oe-core
-	branch = master
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "meta-intel"]
 	path = layers/meta-intel
-	url = git://git.yoctoproject.org/meta-intel
-	branch = master
+	url = ../meta-intel
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "wrlabs-integration"]
 	path = layers/wrlabs-integration
 	url = ../wrlabs-integration
@@ -28,12 +28,12 @@
 	branch = master-oci
 [submodule "meta-openembedded"]
 	path = layers/meta-openembedded
-	url = git://git.openembedded.org/meta-openembedded
-	branch = master
+	url = ../meta-openembedded
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "meta-virtualization"]
 	path = layers/meta-virtualization
-	url = git://git.yoctoproject.org/meta-virtualization
-	branch = master
+	url = ../meta-virtualization
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "oe-meta-go"]
 	path = layers/oe-meta-go
 	url = ../oe-meta-go
@@ -60,16 +60,16 @@
 	branch = master
 [submodule "meta-cloud-services"]
 	path = layers/meta-cloud-services
-	url = git://git.yoctoproject.org/meta-cloud-services
-	branch = master
+	url = ../meta-cloud-services
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "meta-browser"]
 	path = layers/meta-browser
 	url = git://github.com/OSSystems/meta-browser.git
 	branch = master
 [submodule "meta-security"]
         path = layers/meta-security
-        url = git://git.yoctoproject.org/meta-security
-        branch = master
+        url = ../meta-security
+        branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "external-binaries"]
 	path = layers/external-binaries
 	url = ../external-binaries
@@ -84,12 +84,12 @@
 	branch = master
 [submodule "meta-secure-core"]
 	path = layers/meta-secure-core
-	url = https://github.com/jiazhang0/meta-secure-core.git
-	branch = master
+	url = ../meta-secure-core.git
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "meta-dpdk"]
 	path = layers/meta-dpdk
-	url = git://git.yoctoproject.org/meta-dpdk
-	branch = master
+	url = ../meta-dpdk
+	branch = WRLINUX_10_17_BASE_UPDATE0001
 [submodule "meta-java"]
 	path = layers/meta-java
 	url = ../meta-java
