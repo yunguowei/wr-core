@@ -21,11 +21,11 @@
 [submodule "meta-overc"]
 	path = layers/meta-overc
 	url = ../meta-overc
-	branch = master-oci-fli
+	branch = master-oci
 [submodule "overc-installer"]
 	path = overc-installer
 	url = ../overc-installer
-	branch = master-oci-fli
+	branch = master-oci
 [submodule "meta-openembedded"]
 	path = layers/meta-openembedded
 	url = ../meta-openembedded
