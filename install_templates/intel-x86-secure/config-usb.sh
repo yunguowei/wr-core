@@ -26,6 +26,8 @@ HDINSTALL_ROOTFS="${ARTIFACTS_DIR}/cube-graphical-builder-genericx86-64.tar.bz2 
                   ${ARTIFACTS_DIR}/cube-builder-genericx86-64.tar.bz2"
 
 
+FIRMWARE_INSTALL="iwlwifi-7260-17.ucode"
+
 # Uncomment to specify path to init.pp
 #INSTALL_PUPPET_DIR="puppet"
 
