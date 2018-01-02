@@ -117,6 +117,7 @@ if [ $? = 0 ] ; then
 	    external-binaries \
 	    meta-virtualization \
 	    oe-meta-go \
+	    meta-iot-cloud \
 	    `echo -E $EXTRA_POST_LAYERS` ; do
 	    if [ -e $OEROOT/../$e ] ; then
     		perl -p -i -e "s#^(.*)oe-core/meta(.*)#\$1oe-core/meta\$2\n\$1$e \\\\#" conf/bblayers.conf
