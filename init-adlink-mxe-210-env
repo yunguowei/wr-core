@@ -1,0 +1,105 @@
+#!/bin/sh
+
+# Copyright (C) 2006-2011 Linux Foundation
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+if [ -n "$BASH_SOURCE" ]; then
+   OEROOT="`dirname $BASH_SOURCE`/layers/oe-core"
+elif [ -n "$ZSH_NAME" ]; then
+   OEROOT="`dirname $0`/layers/oe-core"
+else
+   OEROOT="`pwd`/layers/oe-core"
+fi
+
+if [ -n "$BBSERVER" ]; then
+   unset BBSERVER
+fi
+
+if [ -n "$BBSERVER" ]; then
+   unset BBSERVER
+fi
+
+# Figure out the "TOP" relative to TOP/layers/oe-core
+THIS_SCRIPT=`dirname $OEROOT`
+THIS_SCRIPT=`dirname $THIS_SCRIPT`
+THIS_SCRIPT=$THIS_SCRIPT/init-adlink-mxe-210-env
+
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" -o "$0" = init-adlink-mxe-210-env ]; then
+   echo "Error: This script needs to be sourced. Please run as '. $THIS_SCRIPT'"
+   exit 1
+fi
+
+OEROOT=`readlink -f "$OEROOT"`
+export OEROOT
+
+TEMPLATECONF=$OEROOT/../../.template-conf
+export TEMPLATECONF
+
+S_ARGS="$@"
+if [ "$S_ARGS" = "" ] ; then
+   S_ARGS=build-adlink-mxe-210
+fi
+
+# Additional Layers
+EXTRA_PRE_LAYERS=meta-intel
+
+EXTRA_POST_LAYERS="meta-secure-core/meta
+    meta-secure-core/meta-signing-key
+    meta-secure-core/meta-efi-secure-boot
+    meta-secure-core/meta-tpm
+    meta-secure-core/meta-tpm2
+    meta-secure-core/meta-integrity
+    meta-secure-core/meta-encrypted-storage
+"
+
+# Local machine configuration
+MACH_LOCAL_CONF='
+MACHINE = "intel-corei7-64"
+# Set wide compatibility with core2 processors
+DEFAULTTUNE = "core2-64"
+COMPATIBLE_MACHINE_intel-corei7-64 = "intel-corei7-64"
+# Set default machine to select in the hob interface
+HOB_MACHINE = "intel-corei7-64"
+DEFAULT_IMAGE = "wrlinux-image-glibc-small"
+LINUX_KERNEL_TYPE = "preempt-rt"
+PREFERRED_PROVIDER_virtual/kernel_intel-corei7-64 = "linux-yocto-rt"
+KTYPE_ENABLED = "preempt-rt"
+PACKAGE_CLASSES = "package_rpm"
+IMAGE_FSTYPES += "tar.bz2"
+NOISO = "1"
+IMAGE_FSTYPES += "ext3"
+IMAGE_FSTYPES += "live"
+
+require ../layers/wrlabs-integration/templates/feature/efi-secure-boot/template.conf
+require ../layers/wrlabs-integration/templates/feature/ima/template.conf
+require ../layers/wrlabs-integration/templates/feature/luks/template.conf
+require ../layers/wrlabs-integration/templates/feature/tpm/template.conf
+require ../layers/wrlabs-integration/templates/feature/tpm2/template.conf
+
+INHERIT += "sign_rpm"
+'
+
+source $OEROOT/../../scripts/common_init
+
+unset OEROOT
+unset BBPATH
+unset THIS_SCRIPT
+unset S_ARGS
+unset TEMPLATECONF
+unset DO_CONFIG
+unset EXTRA_PRE_LAYERS
+unset EXTRA_POST_LAYERS
+unset MACH_LOCAL_CONF
