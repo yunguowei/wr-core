@@ -102,6 +102,7 @@ if [ $? = 0 ] ; then
 	    meta-cloud-services \
             meta-browser \
 	    meta-security \
+	    meta-iot-cloud \
 	    meta-java \
 	    meta-dpdk \
             meta-openembedded/meta-initramfs \
