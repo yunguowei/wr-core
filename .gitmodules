@@ -94,3 +94,7 @@
 	path = layers/meta-java
 	url = ../meta-java
 	branch = pulsar-2017
+[submodule "meta-iot-cloud"]
+	path = layers/meta-iot-cloud
+	url = ../meta-iot-cloud
+	branch = pulsar-x
