@@ -98,3 +98,6 @@
 	path = layers/meta-iot-cloud
 	url = ../meta-iot-cloud
 	branch = pulsar-x
+[submodule "meta-flatpak"]
+	path = layers/meta-flatpak
+	url = https://github.com/lifupan/meta-flatpak.git

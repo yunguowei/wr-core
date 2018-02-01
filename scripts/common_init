@@ -105,6 +105,7 @@ if [ $? = 0 ] ; then
 	    meta-iot-cloud \
 	    meta-java \
 	    meta-dpdk \
+            meta-flatpak \
             meta-openembedded/meta-initramfs \
             meta-openembedded/meta-filesystems \
 	    meta-openembedded/meta-networking \
@@ -128,7 +129,7 @@ DISTRO = "wrlinux-small"
 WRLINUX_RCPLVERSION = ".6"
 $MACH_LOCAL_CONF
 # Activate systemd
-VIRTUAL-RUNTIME_init_manager = " systemd "
+VIRTUAL-RUNTIME_init_manager = "systemd"
 VIRTUAL-RUNTIME_syslog = "sysklogd"
 DISTRO_FEATURES_append = " systemd x11 opengl virtualization"
 DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
@@ -180,6 +181,17 @@ OVERC_ESSENTIAL_MODE = "read-write"
 
 PREFERRED_PROVIDER_virtual/java-initial-native = "cacao-initial-native"
 PREFERRED_PROVIDER_virtual/java-native = "jamvm-native"
+
+require `pwd`/../layers/meta-flatpak/conf/distro/include/flatpak.inc
+
+DISTRO_FEATURES_append = " \
+    usrmerge \
+    systemd \
+    pam \
+    flatpak \
+"
+
+FLATPAK_IMAGE_PATTERN = "glob:*-flatpak*"
 
 ###-----------------------------------------------------------###
 ### Everyting Above was automatically generated               ###
