@@ -169,7 +169,7 @@ PRSERV_HOST = "localhost:0"
 SDK_EXT_TYPE = "minimal"
 SDK_INCLUDE_TOOLCHAIN = "1"
 
-IMAGE_FSTYPES_remove = "wic"
+#IMAGE_FSTYPES_remove = "wic"
 
 PREMIRRORS_append := "\\
     http://.*/.* file://\${TOPDIR}/../premirrors9/ \n \\
