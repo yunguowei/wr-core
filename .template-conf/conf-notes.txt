@@ -1,7 +1,3 @@
 Common targets are:
 
-    cube-essential 
-    cube-dom0 
-    cube-desktop
-    cube-server
-    cube-gw
+    cube-gw-flatpak-runtime
