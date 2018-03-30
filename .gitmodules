@@ -14,10 +14,6 @@
 	path = layers/wrlabs-integration
 	url = ../wrlabs-integration
 	branch = master
-[submodule "xilinx-zynq"]
-	path = layers/xilinx-zynq
-	url = ../xilinx-zynq
-	branch = pulsar-8
 [submodule "meta-overc"]
 	path = layers/meta-overc
 	url = ../meta-overc
@@ -38,18 +34,6 @@
 	path = layers/oe-meta-go
 	url = ../oe-meta-go
 	branch = ovp7-20150902
-[submodule "qemuarma9"]
-	path = layers/qemuarma9
-	url = ../qemuarma9
-	branch = master
-[submodule "qemuarm"]
-	path = layers/qemuarm
-	url = ../qemuarm
-	branch = LB13_8.0_RCPL0001
-[submodule "fsl-ls10xx"]
-	path = layers/fsl-ls10xx
-	url = ../fsl-ls10xx
-	branch = pulsar-8
 [submodule "meta-gateway"]
 	path = layers/meta-gateway
 	url = ../meta-gateway
@@ -74,14 +58,6 @@
 	path = layers/external-binaries
 	url = ../external-binaries
 	branch = master
-[submodule "wr-hac-agent"]
-	path = layers/wr-hac-agent
-	url = ../wr-hac-agent
-	branch = master
-[submodule "meta-raspberrypi"]
-	path = layers/meta-raspberrypi
-	url = git://git.yoctoproject.org/meta-raspberrypi
-	branch = master
 [submodule "meta-secure-core"]
 	path = layers/meta-secure-core
 	url = ../meta-secure-core.git
@@ -100,4 +76,4 @@
 	branch = pulsar-x
 [submodule "meta-flatpak"]
 	path = layers/meta-flatpak
-	url = https://github.com/lifupan/meta-flatpak.git
+	url = ../meta-flatpak
