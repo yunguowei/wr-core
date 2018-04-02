@@ -20,9 +20,17 @@ cd wr-core
 . init-intel-x86-env
 
 # Build the images
-bitbake cube-gw-flatpak-runtime
+bitbake cube-gw-ostree-runtime
 
 # Then dd it to an usb stick or sd card and boot up Pulsar directly on target
+
+# If you want to deploy Pulsar to your target local storage, such as sda, please
+# run the following comnand after the system had boot up successfully:
+
+installer create /var/wic.wks.sample
+
+# Notes: This command will format your sda device and deploy the Pulsar system
+# onto it.
 
 ### login: root  password: root
 
