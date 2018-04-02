@@ -32,5 +32,5 @@ installer create /var/wic.wks.sample
 # Notes: This command will format your sda device and deploy the Pulsar system
 # onto it.
 
-### login: root  password: root
+### login: root  password: incendia
 
