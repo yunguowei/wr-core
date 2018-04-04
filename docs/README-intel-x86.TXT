@@ -26,14 +26,28 @@ Then dd it to an usb stick or sd card and boot up Pulsar directly on target
 
 ### login: root  password: incendia
 
+###### Deploy/Install the Pulsar system onto target local storage ######
+The cube-gw-ostree-runtime wic image build out by "bitbake cube-gw-ostree-runtime"
+is a bootable live image and at the same time it is a installer image too. It means
+that you can try the Pulsar system booting directly from this image, and also you 
+can deploy Pulsar system on to your target's local storage with it. 
+
+There's a sample deploy configure file in /var directory named as wic.wks.sample.
+This sample file will instruct the pulsar's installer to deploy Pulsar system to
+sda device by default. 
+
 If you want to deploy Pulsar to your target local storage, such as sda, please
 run the following comnand after the system had boot up successfully:
 
 #installer create /var/wic.wks.sample
 
+Once the command finished successfully, it needs to reboot the system to boot from
+the latest deployed Pulsar.
+
 <Notes: This command will format your sda device and deploy the Pulsar system onto it>
 
 ###### Publishing The Pulsar system's OStree Repository ######
+
 Pulsar system is managed by OStree repositories. If you had some changes to the wr-core source
 codes and wanted to apply these changes to your system which had been deploy on the target, please
 use or create a new project and then then build the image cube-gw-ostree-runtime, once it was built
@@ -55,5 +69,22 @@ Then you can use the following command to update/upgrade your system now:
 
 #ostree admin upgrade 
 
-Once the update/upgrade completed, you need to reboot your system to apply the it.
+Once the update/upgrade completed, you need to reboot your system to apply the changes.
+
+###### To Setup a development environment on Pulsar system ######
+
+Pulsar is based on the OStree system, thus its rootfs is readonly and you cannot do any changes
+to the system's "/usr", "/bin" and "/lib" etc key system components. If you want to add/install 
+any other packages by rpm/dnf command, you should unlock the ostree first. There are two types of
+unlocks: "unlock temporarily" and "unlock with hotfix". The difference between them is that: "unlock
+temporarily" will not keep the changes after the system reboots; On the contrary, "unlock with hotfix"
+will retain changes across reboots. 
+
+To do the "unlock temporarily", please run command:
+#ostree admin unlock
+
+To do the "unlock with hotfix", please run command:
+#ostree admin unlock --hotfix
+
+Once you do the unlock, you can install any programs in the system by rpm/dnf commands.
 
