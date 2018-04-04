@@ -1,6 +1,6 @@
 Quick start instructions to build Wind River Pulsar Linux
-for the Intel Minnow Board Max and Intel Compute Stick
-(Cherry Trail and Bay Trail)
+for the Intel NUC Board and Intel Apollolake including Cherry 
+Trail and Bay Trail.
 
 For a more guides, examples and information please see:
 https://knowledge.windriver.com/?cid=pulsar_lx
