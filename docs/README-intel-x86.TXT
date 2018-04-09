@@ -22,6 +22,9 @@ $. init-intel-x86-env
 Build the images
 $bitbake cube-gw-ostree-runtime
 
+Once build successfully, you can locate the image from:
+<build dir>/tmp/deploy/images/intel-corei7-64/cube-gw-ostree-runtime-intel-corei7-64.wic
+
 Then dd it to an usb stick or sd card and boot up Pulsar directly on target
 
 ### login: root  password: incendia
