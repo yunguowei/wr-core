@@ -77,3 +77,7 @@
 [submodule "meta-flatpak"]
 	path = layers/meta-flatpak
 	url = ../meta-flatpak
+[submodule "nxp-imx6"]
+	path = layers/nxp-imx6
+	url = https://github.com/WindRiver-OpenSourceLabs/nxp-imx6.git
+	branch = WRLINUX_10_17_LTS
