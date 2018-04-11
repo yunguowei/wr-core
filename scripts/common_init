@@ -103,6 +103,7 @@ if [ $? = 0 ] ; then
             meta-browser \
 	    meta-security \
 	    meta-iot-cloud \
+	    meta-device-cloud \
 	    meta-java \
 	    meta-dpdk \
             meta-flatpak \
