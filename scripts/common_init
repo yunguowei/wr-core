@@ -136,7 +136,8 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED += " sysvinit "
 KERNEL_FEATURES_append = " cfg/systemd.scc"
 USER_CLASSES = "buildstats buildstats-summary"
 
-EXTRA_IMAGEDEPENDS += "\${@bb.utils.contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
+EXTRA_IMAGEDEPENDS_x86-64 += "\${@bb.utils.contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
+EXTRA_IMAGEDEPENDS_x86 += "\${@bb.utils.contains('INCOMPATIBLE_LICENSE', 'GPLv3', '', 'grub-efi', d)}"
 
 ## Included feature templates
 #require `pwd`/../layers/wr-kernel/templates/default/template.conf
